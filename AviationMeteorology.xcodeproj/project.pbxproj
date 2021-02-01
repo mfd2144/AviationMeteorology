@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		294EE8566B388FA6EF52F902 /* Pods_AviationMeteorology.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */; };
 		BA0290AF25B9B73B00FAFBC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0290AE25B9B73B00FAFBC2 /* AppDelegate.swift */; };
 		BA0290B125B9B73B00FAFBC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0290B025B9B73B00FAFBC2 /* SceneDelegate.swift */; };
 		BA0290B625B9B73B00FAFBC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0290B425B9B73B00FAFBC2 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0303794C4FCAF376E6E8D94D /* Pods-AviationMeteorology.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AviationMeteorology.release.xcconfig"; path = "Target Support Files/Pods-AviationMeteorology/Pods-AviationMeteorology.release.xcconfig"; sourceTree = "<group>"; };
+		894D6F03C8ED4DF10ECF3D96 /* Pods-AviationMeteorology.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AviationMeteorology.debug.xcconfig"; path = "Target Support Files/Pods-AviationMeteorology/Pods-AviationMeteorology.debug.xcconfig"; sourceTree = "<group>"; };
 		BA0290AB25B9B73B00FAFBC2 /* AviationMeteorology.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AviationMeteorology.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0290AE25B9B73B00FAFBC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA0290B025B9B73B00FAFBC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		BA0290C925BA058C00FAFBC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BA0A9DBD25C81648002B661A /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AviationMeteorology.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +41,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				294EE8566B388FA6EF52F902 /* Pods_AviationMeteorology.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DBDBF84FE494AFBB9E3B9C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA0290A225B9B73B00FAFBC2 = {
 			isa = PBXGroup;
 			children = (
 				BA0290AD25B9B73B00FAFBC2 /* AviationMeteorology */,
 				BA0290AC25B9B73B00FAFBC2 /* Products */,
+				BCA0D243101612676EB2F6E6 /* Pods */,
+				9DBDBF84FE494AFBB9E3B9C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +115,16 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		BCA0D243101612676EB2F6E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				894D6F03C8ED4DF10ECF3D96 /* Pods-AviationMeteorology.debug.xcconfig */,
+				0303794C4FCAF376E6E8D94D /* Pods-AviationMeteorology.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA0290BF25B9B73C00FAFBC2 /* Build configuration list for PBXNativeTarget "AviationMeteorology" */;
 			buildPhases = (
+				0EEB3882EDB487D81141F99F /* [CP] Check Pods Manifest.lock */,
 				BA0290A725B9B73B00FAFBC2 /* Sources */,
 				BA0290A825B9B73B00FAFBC2 /* Frameworks */,
 				BA0290A925B9B73B00FAFBC2 /* Resources */,
+				95F02D5434E420BFF608E475 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,6 +191,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EEB3882EDB487D81141F99F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AviationMeteorology-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95F02D5434E420BFF608E475 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AviationMeteorology/Pods-AviationMeteorology-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AviationMeteorology/Pods-AviationMeteorology-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AviationMeteorology/Pods-AviationMeteorology-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA0290A725B9B73B00FAFBC2 /* Sources */ = {
@@ -319,6 +388,7 @@
 		};
 		BA0290C025B9B73C00FAFBC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 894D6F03C8ED4DF10ECF3D96 /* Pods-AviationMeteorology.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -338,6 +408,7 @@
 		};
 		BA0290C125B9B73C00FAFBC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0303794C4FCAF376E6E8D94D /* Pods-AviationMeteorology.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

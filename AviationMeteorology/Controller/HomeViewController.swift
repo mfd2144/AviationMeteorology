@@ -15,12 +15,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let height = decodedButton.frame.size.height/2
-        let buttonColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
-        decodedButton.drawCorner(CGColor: buttonColor, borderWidth: 2, cornerRadius: height)
-        decodedButton.isHidden = true
-        airportSearchPort.delegate = self
-
-       
+        decodedButton.drawCorner( borderWidth: 2, cornerRadius: height)
+        
     }
    
     
