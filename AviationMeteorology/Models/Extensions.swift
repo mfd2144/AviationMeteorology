@@ -14,6 +14,5 @@ extension UIButton{
         button.layer.borderColor = CGColor
         let edgeInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         button.titleEdgeInsets = edgeInset
-        button.frame.size.height = 50
     }
 }

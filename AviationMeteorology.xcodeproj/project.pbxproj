@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,9 @@
 		BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0290C625BA02BF00FAFBC2 /* Extensions.swift */; };
 		BA0290CA25BA058C00FAFBC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0290C925BA058C00FAFBC2 /* SettingsViewController.swift */; };
 		BA0A9DBE25C81649002B661A /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A9DBD25C81648002B661A /* WeatherData.swift */; };
+		BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */; };
 		BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D97F825C7445800B3512B /* HomeViewController.swift */; };
+		BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA69E35325C88CA000BED030 /* ApiCode.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +34,9 @@
 		BA0290C625BA02BF00FAFBC2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BA0290C925BA058C00FAFBC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BA0A9DBD25C81648002B661A /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeathearModels.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BA69E35325C88CA000BED030 /* ApiCode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiCode.plist; sourceTree = "<group>"; };
 		EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AviationMeteorology.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,7 @@
 				BA0290C525BA028900FAFBC2 /* Controller */,
 				BA0290B725B9B73C00FAFBC2 /* Assets.xcassets */,
 				BA0290B925B9B73C00FAFBC2 /* LaunchScreen.storyboard */,
+				BA69E35325C88CA000BED030 /* ApiCode.plist */,
 				BA0290BC25B9B73C00FAFBC2 /* Info.plist */,
 			);
 			path = AviationMeteorology;
@@ -102,6 +107,7 @@
 			children = (
 				BA0290C625BA02BF00FAFBC2 /* Extensions.swift */,
 				BA0A9DBD25C81648002B661A /* WeatherData.swift */,
+				BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,7 +127,6 @@
 				894D6F03C8ED4DF10ECF3D96 /* Pods-AviationMeteorology.debug.xcconfig */,
 				0303794C4FCAF376E6E8D94D /* Pods-AviationMeteorology.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -184,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */,
 				BA0290BB25B9B73C00FAFBC2 /* LaunchScreen.storyboard in Resources */,
 				BA0290B825B9B73C00FAFBC2 /* Assets.xcassets in Resources */,
 				BA0290B625B9B73B00FAFBC2 /* Main.storyboard in Resources */,
@@ -241,6 +247,7 @@
 			files = (
 				BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */,
 				BA0290AF25B9B73B00FAFBC2 /* AppDelegate.swift in Sources */,
+				BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */,
 				BA0290B125B9B73B00FAFBC2 /* SceneDelegate.swift in Sources */,
 				BA0290CA25BA058C00FAFBC2 /* SettingsViewController.swift in Sources */,
 				BA0A9DBE25C81649002B661A /* WeatherData.swift in Sources */,
