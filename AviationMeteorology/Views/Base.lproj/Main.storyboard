@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="115" width="375" height="207"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LTAC 011050Z VRB02KT 9999 FEW040 BKN180 08\/02 Q1017 NOSIG" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcc-fU-QRW">
-                                        <rect key="frame" x="16" y="36.5" width="343" height="43"/>
+                                        <rect key="frame" x="16" y="37" width="343" height="43"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -28,8 +28,8 @@
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iep-20-3QR">
-                                        <rect key="frame" x="16" y="5" width="58" height="21.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iep-20-3QR">
+                                        <rect key="frame" x="16" y="5" width="31" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -64,8 +64,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYX-pX-zKW">
                                 <rect key="frame" x="0.0" y="322" width="375" height="206.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-UO-v1i">
-                                        <rect key="frame" x="16" y="5" width="31" height="21.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-UO-v1i">
+                                        <rect key="frame" x="16" y="5" width="58" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-IS-qE9">
-                                        <rect key="frame" x="16" y="36.5" width="343" height="107.5"/>
+                                        <rect key="frame" x="16" y="37" width="343" height="107.5"/>
                                         <string key="text">TAF LTAC 010440Z 0106\/0206 VRB02KT 4000 BR NSC TEMPO 0106\/0107 1200 BCFG BKN010 BECMG 0107\/0109 8000 SCT040 BKN180 BECMG 0116\/0118 CAVOK</string>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
                                         <nil key="textColor"/>
@@ -125,7 +125,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="decodePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lyV-qx-5du"/>
-                                    <segue destination="Qi1-ea-JNF" kind="show" id="vy9-rt-rjN"/>
+                                    <segue destination="Qi1-ea-JNF" kind="show" identifier="MainToDecoded" id="vy9-rt-rjN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -189,7 +189,8 @@
                     <connections>
                         <outlet property="airportSearchPort" destination="qUq-pI-zqx" id="fNS-iN-tGM"/>
                         <outlet property="decodedButton" destination="WzW-0P-mIl" id="2Qd-E9-xNt"/>
-                        <outlet property="metarResultLabel" destination="Hcc-fU-QRW" id="B5f-fr-Aio"/>
+                        <outlet property="metarResultLable" destination="h3a-IS-qE9" id="MOs-t5-aMX"/>
+                        <outlet property="tafResultLabel" destination="Hcc-fU-QRW" id="B5f-fr-Aio"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -311,10 +312,10 @@
             </objects>
             <point key="canvasLocation" x="3956" y="1212"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Units Setting Table View Controller-->
         <scene sceneID="a9i-XL-JRc">
             <objects>
-                <tableViewController id="f2r-1K-L3b" sceneMemberID="viewController">
+                <tableViewController id="f2r-1K-L3b" customClass="UnitsSettingTableViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XV0-PJ-Dkt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -679,15 +680,19 @@
                     <navigationItem key="navigationItem" id="d33-C0-ED9">
                         <barButtonItem key="rightBarButtonItem" title="Default" id="u0N-xw-cnV"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ceilingFeetImage" destination="wKi-eI-gxJ" id="Dba-mP-QvE"/>
+                        <outlet property="ceilingMetersImage" destination="3dn-xH-hl4" id="xnF-Ug-p15"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlq-Oq-Y6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3956" y="545.57721139430294"/>
         </scene>
-        <!--View Controller-->
+        <!--Decoded Metar View Controller-->
         <scene sceneID="2kt-5J-Jmo">
             <objects>
-                <viewController id="Qi1-ea-JNF" sceneMemberID="viewController">
+                <viewController id="Qi1-ea-JNF" customClass="DecodedMetarViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FxS-t4-S25">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1047,6 +1052,20 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="zYM-Df-8Pw"/>
+                    <connections>
+                        <outlet property="barometerLabel" destination="amH-rU-Ix8" id="1EY-6D-yup"/>
+                        <outlet property="ceilingLabel" destination="Nig-8u-yhP" id="rbr-ha-4k9"/>
+                        <outlet property="cloudLabel" destination="3uv-zX-G0p" id="w2c-C8-HX8"/>
+                        <outlet property="conditionLabel" destination="NYO-KB-G8F" id="V5V-Eh-IVJ"/>
+                        <outlet property="coordinatesLabel" destination="lfF-aw-x4u" id="GaQ-UV-znL"/>
+                        <outlet property="dewPointLabel" destination="5Ul-qg-WaQ" id="rwi-Rg-rfv"/>
+                        <outlet property="flightRuleLabel" destination="QDf-Bd-kms" id="Dhb-oW-cFn"/>
+                        <outlet property="nameLabel" destination="kdC-9O-SZm" id="g6g-dF-Rfb"/>
+                        <outlet property="thermometerLabel" destination="QK6-Kh-NNo" id="baO-bf-oNv"/>
+                        <outlet property="timeLabel" destination="Ah0-Ke-JGw" id="lYd-Y1-ILQ"/>
+                        <outlet property="visibilityLabel" destination="klL-KP-Hlm" id="TX5-CY-aw6"/>
+                        <outlet property="windLabel" destination="yEH-j3-BZK" id="ubM-RU-kbc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrd-cQ-hNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

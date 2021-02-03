@@ -14,7 +14,8 @@ enum fetchDataError: Error{
 }
 
 protocol WeatherDataDelegate{
-    func updateWeather(weatherArray: [WeathearMetarModel])
+    func updateMetar(weatherMetarArray: [WeathearMetarModel])
+    func updateTaf(weatherTafArray :[WeatherTafModel])
 }
 
 struct WeatherData{
@@ -42,34 +43,51 @@ struct WeatherData{
     
     
     //    query for metar and taf , then grap results as JSON
-    func weatherSource(codesICAO: [String]){
+    func weatherSource(codesICAO: [String],reportType: String){
         
-        var model: [WeathearMetarModel] = []
-        fetchData(codesICAO,reportType:"metar"){ (dataJSON,error) in
+        
+        
+        
+        fetchData(codesICAO,reportType){ (dataJSON,error) in
             if let error = error{
                 print(error.localizedDescription)
             }
-            //            JSON check then parse data from other companents.And data is also JSON and include our weather model informations. Then again parse it and create an array which include WeatherMetarModel
+            //           Check JSON  then parse data from other components.And data is also JSON and include our weather model informations. Then again parse it and create an array which include WeatherMetarModel
             
-            if let metarData = dataJSON{
-                for (string,metar) in metarData{
+            if let metarTafData = dataJSON{
+                for (string,metarTaf) in metarTafData{
                     if string == "data"{
-                        if let metarArray = metar.array{
-                            for singleMetar in metarArray{
-                                let newModel = WeathearMetarModel.init(data: singleMetar)
-                                model.append(newModel)
+                        if let metarTafArray = metarTaf.array{
+                            if metarTafArray != [] && reportType == K.metar{
+                                var modelMetar: [WeathearMetarModel] = []
+                                for singleMetar in metarTafArray{
+                                    let newModel = WeathearMetarModel.init(data: singleMetar)
+                                    modelMetar.append(newModel)
+                                }
+                                    
+                                delegate?.updateMetar(weatherMetarArray: modelMetar)
+                                    }else if  metarTafArray != [] && reportType == K.taf{
+                                        var modelTaf : [WeatherTafModel] = []
+                                        for singleTaf in metarTafArray{
+                                            let newModel = WeatherTafModel.init(data: singleTaf)
+                                            modelTaf.append(newModel)
+                                    }
+                                        delegate?.updateTaf(weatherTafArray: modelTaf)
+                                        
+                                }
+                                    
                             }
-                            delegate?.updateWeather(weatherArray: model)
+                        
                         }
                     }
                 }
             }
             
         }
-        }
+     
         
-        //Fetch data
-        private func fetchData(_ codesICAO: [String], reportType: String, completion: @escaping (JSON?,Error?) -> Void){
+        //Fetch data using by alamofire.
+        private func fetchData(_ codesICAO: [String],_ reportType: String, completion: @escaping (JSON?,Error?) -> Void){
             let headars = HTTPHeader(name: "X-API-Key", value: apiCode)
             let stationsString = codeToString(codesICAO)
             print(stationsString)

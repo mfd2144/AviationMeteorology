@@ -11,20 +11,38 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var decodedButton: UIButton!
     @IBOutlet weak var airportSearchPort: UISearchBar!
-    @IBOutlet weak var metarResultLabel: UILabel!
+    @IBOutlet weak var tafResultLabel: UILabel!
+    @IBOutlet weak var metarResultLable: UILabel!
     var metarModel : [WeathearMetarModel]?
+    var tafModel : [WeatherTafModel]?
     var weatherData = WeatherData()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let height = decodedButton.frame.size.height/2
         decodedButton.drawCorner( borderWidth: 2, cornerRadius: height)
-        metarResultLabel.text = ""
+        tafResultLabel.text = "-"
+        metarResultLable.text = "-"
         weatherData.delegate = self
+        decodedButton.isHidden = true
+        
     }
 
     @IBAction func decodePressed(_ sender: UIButton) {
-        metarResultLabel.text = metarModel![0].metarText
+
+    }
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationVC = segue.destination as? DecodedMetarViewController{
+            guard let singleMetarModel = metarModel?[0] else { return }
+            destinationVC.weatherModel = singleMetarModel
+            
+        }
     }
     
 }
@@ -32,15 +50,28 @@ class HomeViewController: UIViewController {
 //MARK: - SearchBarDelegate
 extension HomeViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        weatherData.weatherSource(codesICAO: ["LTAT"])
+        let icaoCode = searchBar.text!
+            self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.metar)
+            self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.taf)
+
+       
         searchBar.endEditing(true)
+        searchBar.text = ""
     }
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:WeatherDataDelegate{
-    func updateWeather(weatherArray: [WeathearMetarModel]) {
-        metarResultLabel.text = weatherArray[0].metarText
+    func updateMetar(weatherMetarArray: [WeathearMetarModel]) {
+        metarModel = weatherMetarArray
+        metarResultLable.text = metarModel![0].metarText
+        decodedButton.isHidden = false
     }
     
-
+    func updateTaf(weatherTafArray: [WeatherTafModel]) {
+        tafModel = weatherTafArray
+        tafResultLabel.text = tafModel![0].tafText
+    }
 }
+    
+
+
