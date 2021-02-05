@@ -25,10 +25,21 @@ class UnitsSettingTableViewController: UITableViewController {
     @IBOutlet weak var visibiltyMiles: UIButton!
     @IBOutlet weak var feetButton: UIButton!
     @IBOutlet weak var metersButton: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSettings()
         loadScreen()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     //MARK: - A Button Pressed
 //    When click a box,one of the following actions will start
@@ -97,7 +108,7 @@ extension UnitsSettingTableViewController{
         do {
             try newSettings.write(to: url)
         } catch  {
-            fatalError()
+            fatalError(error.localizedDescription)
         }
         
         loadScreen()
@@ -120,7 +131,7 @@ extension UnitsSettingTableViewController{
 //    Take UI Button array and decide which box will be fill according to rawValue of Settings
         func loadScreenModel(buttons: [UIButton],rawValue: String){
             guard let chosenSettings = Settings.init(rawValue: rawValue) else {return}
-            let index: Int = chosenSettings.index
+            let index: Int = chosenSettings.info.index
             let fill = UIImage(systemName: "square.fill")
             let empty = UIImage(systemName: "square")
             buttons[index].setImage(fill, for: .normal)
@@ -166,21 +177,21 @@ enum Settings:String{
 }
 
 extension Settings{
-    var index: (Int){
+    var info: (index: Int,abbr :String ){
         switch self {
-        case .hg: return 0
-        case .hpa: return 1
-        case .kpa: return 2
-        case .mb: return 3
-        case .feet: return 0
-        case .meters: return 1
-        case .miles: return 0
-        case .celsius: return 0
-        case .fahrenheit: return 1
-        case .speed_mph: return 0
-        case .speed_mps: return 1
-        case .speed_kts: return 2
-        case .speed_kph: return 3
+        case .hg: return (index: 0,abbr: "Hg")
+        case .hpa: return (index: 1,abbr: "hPa")
+        case .kpa: return (index: 2,abbr: "kPa")
+        case .mb: return (index: 3,abbr: "Mbar")
+        case .feet: return (index: 0,abbr: "feet")
+        case .meters: return (index: 1,abbr: "meters")
+        case .miles: return (index: 0,abbr: "miles")
+        case .celsius: return (index: 0,abbr: "C")
+        case .fahrenheit: return (index: 1,abbr: "F")
+        case .speed_mph: return (index: 0,abbr: "MPH")
+        case .speed_mps: return (index: 1,abbr: "MPS")
+        case .speed_kts: return (index: 2,abbr: "Knot")
+        case .speed_kph: return (index: 3,abbr: "KPH")
         }
     }
 }

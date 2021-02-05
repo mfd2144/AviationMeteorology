@@ -17,4 +17,11 @@ struct K{
     static let temperature = "temperature"
     static let dewpoint = "dewpoint"
     static let visibility = "visibility"
+    static let ceiling = "ceiling"
+    static let time = "time"
+    static let cloud = "cloud"
+    static let coordinates = "coordinates"
+    static let flightRule = "flightRule"
+    static let condition = "condition"
+    static let airportName = "airportName"
 }

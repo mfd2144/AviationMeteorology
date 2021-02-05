@@ -79,7 +79,6 @@ struct WeathearMetarModel{
   
     init(data: JSON){
         self.data = data
-      printArray()
         
     }
     private func returnDictionary(_ name: String)->Dictionary<String,String>{
@@ -88,19 +87,6 @@ struct WeathearMetarModel{
             newDic[key] = value.stringValue
         }
         return newDic
-    }
-    
-    func printArray(){
-//        print(barometer)
-//        print(elevation)
-//        print("1")
-//        print(wind)
-//        print(ceiling)
-//        print(dewPoint)
-        print(temperature)
-//        print(condition)
-        print(visibility)
-//        print(data)
     }
     
 }

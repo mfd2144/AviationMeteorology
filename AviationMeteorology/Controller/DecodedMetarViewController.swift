@@ -10,9 +10,10 @@ import UIKit
 
 
 class DecodedMetarViewController: UIViewController {
+ 
     var weatherModel : WeathearMetarModel?
     var startingSettings :Dictionary<String,String> = [:]
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var coordinatesLabel: UILabel!
@@ -24,7 +25,7 @@ class DecodedMetarViewController: UIViewController {
     @IBOutlet weak var dewPointLabel: UILabel!
     @IBOutlet weak var cloudLabel: UILabel!
     @IBOutlet weak var ceilingLabel: UILabel!
-    
+    @IBOutlet weak var elevationLabel: UIBarButtonItem!
     @IBOutlet weak var visibilityLabel: UILabel!
     
     
@@ -32,38 +33,45 @@ class DecodedMetarViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         
-
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSettings()
         loadLabelValues()
-
-
+        
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+        loadAbbrevations()
+        
     }
-
+    
     func loadLabelValues(){
         if let actualWeatherModel = weatherModel{
-            nameLabel.text = actualWeatherModel.name
-            ceilingLabel.text = actualWeatherModel.ceiling[startingSettings[K.elevation]!]
-            cloudLabel.text = actualWeatherModel.clouds
-            flightRuleLabel.text = actualWeatherModel.flightCategory
-            coordinatesLabel.text = " \(actualWeatherModel.location.first!), \(actualWeatherModel.location.last!)"
-            timeLabel.text = actualWeatherModel.observedTime
-            visibilityLabel.text = actualWeatherModel.visibility[startingSettings[K.visibility]!]
-            conditionLabel.text = actualWeatherModel.condition["text"]
-            dewPointLabel.text = actualWeatherModel.dewPoint[startingSettings[K.dewpoint]!]
-            windLabel.text = actualWeatherModel.wind[startingSettings[K.wind]!]
-            barometerLabel.text = actualWeatherModel.barometer[startingSettings[K.barometer]!]
+            let screen = ScreenLoadModel(weatherModel: actualWeatherModel, startingSettings: startingSettings).loadData()
+            
+            nameLabel.text = screen[K.airportName]
+            ceilingLabel.text = screen[K.ceiling]
+            cloudLabel.text = screen[K.cloud]
+            flightRuleLabel.text = screen[K.flightRule]
+            coordinatesLabel.text = screen[K.coordinates]
+            timeLabel.text = screen[K.time]
+            visibilityLabel.text = screen[K.visibility]
+            conditionLabel.text = screen[K.condition]
+            dewPointLabel.text = screen[K.dewpoint]
+            windLabel.text = screen[K.wind]
+            barometerLabel.text = screen[K.barometer]
+            thermometerLabel.text = screen[K.temperature]
+            elevationLabel.title = screen[K.elevation]
             
         }
     }
 }
+
 
 extension DecodedMetarViewController {
     
@@ -74,7 +82,24 @@ extension DecodedMetarViewController {
         }
         guard let settings = NSDictionary(contentsOf: _url) as? Dictionary<String,String> else {return}
         startingSettings = settings
-        print(startingSettings)
     }
     
 }
+//MARK: - Units Values
+extension DecodedMetarViewController{
+    func loadAbbrevations(){
+        var abbr = [String]()
+        for item in startingSettings.enumerated(){
+            let settings = Settings.init(rawValue: item.element.value)
+            abbr.append((settings?.info.abbr)!)
+        }
+        
+    }
+}
+
+
+
+
+
+
+

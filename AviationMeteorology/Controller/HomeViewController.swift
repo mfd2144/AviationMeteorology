@@ -30,11 +30,11 @@ class HomeViewController: UIViewController {
         decodedButton.isHidden = true
         
     }
-
+    
     @IBAction func decodePressed(_ sender: UIButton) {
-
+        
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -51,10 +51,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let icaoCode = searchBar.text!
-            self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.metar)
-            self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.taf)
-
-       
+        tafResultLabel.text = ""
+        metarResultLable.text = ""
+        decodedButton.isHidden = true
+        self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.metar)
+        self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.taf)
         searchBar.endEditing(true)
         searchBar.text = ""
     }
@@ -64,14 +65,16 @@ extension HomeViewController:WeatherDataDelegate{
     func updateMetar(weatherMetarArray: [WeathearMetarModel]) {
         metarModel = weatherMetarArray
         metarResultLable.text = metarModel![0].metarText
+        print(metarResultLable.text)
         decodedButton.isHidden = false
     }
     
     func updateTaf(weatherTafArray: [WeatherTafModel]) {
         tafModel = weatherTafArray
         tafResultLabel.text = tafModel![0].tafText
+        print(tafResultLabel.text)
     }
 }
-    
+
 
 

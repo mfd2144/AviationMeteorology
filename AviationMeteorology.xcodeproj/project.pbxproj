@@ -22,6 +22,7 @@
 		BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */; };
 		BA6F21C325CA884200A10932 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C225CA884200A10932 /* Constants.swift */; };
 		BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */; };
+		BADC6FB625CD4AF000F6DA93 /* ScreenLoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC6FB525CD4AF000F6DA93 /* ScreenLoadModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedMetarViewController.swift; sourceTree = "<group>"; };
 		BA6F21C225CA884200A10932 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsSettingTableViewController.swift; sourceTree = "<group>"; };
+		BADC6FB525CD4AF000F6DA93 /* ScreenLoadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenLoadModel.swift; sourceTree = "<group>"; };
 		EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AviationMeteorology.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0290C625BA02BF00FAFBC2 /* Extensions.swift */,
+				BADC6FB525CD4AF000F6DA93 /* ScreenLoadModel.swift */,
 				BA0A9DBD25C81648002B661A /* WeatherData.swift */,
 				BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */,
 				BA6F21C225CA884200A10932 /* Constants.swift */,
@@ -260,6 +263,7 @@
 				BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */,
 				BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */,
 				BA0290B125B9B73B00FAFBC2 /* SceneDelegate.swift in Sources */,
+				BADC6FB625CD4AF000F6DA93 /* ScreenLoadModel.swift in Sources */,
 				BA0A9DBE25C81649002B661A /* WeatherData.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
 				BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */,
