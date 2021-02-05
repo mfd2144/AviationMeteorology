@@ -9,7 +9,11 @@
 import Foundation
 import SwiftyJSON
 
+
 struct WeathearMetarModel{
+  
+    let weatherSettings = UnitsSettingTableViewController()
+    
     let data : JSON
     var metarText: String{
         return data["raw_text"].stringValue
@@ -18,20 +22,11 @@ struct WeathearMetarModel{
         return  data["flight_category"].stringValue
     }
     var temperature: Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data["temperature"]{
-            newDic[key] = value.stringValue
-        }
-        return newDic
+        returnDictionary("temperature")
     }
     var visibility :Dictionary<String,String>{
-    var  newDic = Dictionary<String,String>()
-    for (key,value) in data["visibility"]{
-        newDic[key] = value.stringValue
-        
+        returnDictionary("visibility")
     }
-    return newDic
-}
     var clouds: String{
         return data["ceiling"]["text"].stringValue
     }
@@ -47,28 +42,18 @@ struct WeathearMetarModel{
         return rawValue
     }
     var wind: Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data["wind"]{
-            newDic[key] = value.stringValue
-        }
-        return newDic
+   returnDictionary("wind")
     }
-    var elevation:  Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data["elevation"]{
-            newDic[key] = value.stringValue
-            
-        }
-        return newDic
+    var elevation: Dictionary<String,String>{
+       returnDictionary("elevation")
     }
     
     var condition: Dictionary<String,String>{
         var  newDic = Dictionary<String,String>()
-        for (_,value) in JSON(data["conditions"].arrayObject){
+        for (_,value) in JSON(data["conditions"].arrayObject as Any){
             for (_key,_value) in value{
                 newDic[_key] = _value.stringValue
             }
-            
         }
         return newDic
     }
@@ -82,49 +67,40 @@ struct WeathearMetarModel{
         return ["0","0"]
     }
     var dewPoint: Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data["dewpoint"]{
-            newDic[key] = value.stringValue
-        }
-        return newDic
+        returnDictionary("dewpoint")
     }
-
-   
     var barometer: Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data["barometer"]{
-            newDic[key] = value.stringValue
-            
-        }
-        return newDic
+    returnDictionary("barometer")
     }
     
     var ceiling:  Dictionary<String,String>{
+       returnDictionary("ceiling")
+    }
+  
+    init(data: JSON){
+        self.data = data
+      printArray()
+        
+    }
+    private func returnDictionary(_ name: String)->Dictionary<String,String>{
         var  newDic = Dictionary<String,String>()
-        for (key,value) in data["ceiling"]{
+        for (key,value) in data[name]{
             newDic[key] = value.stringValue
-            
         }
         return newDic
     }
-
     
-   
-    
-    
-    init(data: JSON){
-        self.data = data
-printArray()
-    }
     func printArray(){
-        print(barometer)
-        print(elevation)
-        print(wind)
-        print(ceiling)
-        print(dewPoint)
+//        print(barometer)
+//        print(elevation)
+//        print("1")
+//        print(wind)
+//        print(ceiling)
+//        print(dewPoint)
         print(temperature)
-        print(condition)
-        print(data)
+//        print(condition)
+        print(visibility)
+//        print(data)
     }
     
 }
@@ -146,13 +122,13 @@ struct WeatherTafModel{
 extension WeathearMetarModel:Equatable{
     static func ==(lhs: WeathearMetarModel, rhs: WeathearMetarModel) -> Bool {
         return lhs.data == rhs.data
-}
-
+    }
+    
 }
 
 extension WeatherTafModel:Equatable{
     static func ==(lhs: WeatherTafModel, rhs: WeatherTafModel) -> Bool {
         return lhs.data == rhs.data
-}
-
+    }
+    
 }

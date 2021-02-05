@@ -10,8 +10,8 @@ import UIKit
 
 
 class DecodedMetarViewController: UIViewController {
-
     var weatherModel : WeathearMetarModel?
+    var startingSettings :Dictionary<String,String> = [:]
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -31,9 +31,12 @@ class DecodedMetarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSettings()
         loadLabelValues()
 
 
@@ -47,14 +50,31 @@ class DecodedMetarViewController: UIViewController {
     func loadLabelValues(){
         if let actualWeatherModel = weatherModel{
             nameLabel.text = actualWeatherModel.name
-//            ceilingLabel.text = actualWeatherModel.ceiling
+            ceilingLabel.text = actualWeatherModel.ceiling[startingSettings[K.elevation]!]
             cloudLabel.text = actualWeatherModel.clouds
             flightRuleLabel.text = actualWeatherModel.flightCategory
             coordinatesLabel.text = " \(actualWeatherModel.location.first!), \(actualWeatherModel.location.last!)"
             timeLabel.text = actualWeatherModel.observedTime
-//            visibilityLabel.text = actualWeatherModel.visibilityMeters
+            visibilityLabel.text = actualWeatherModel.visibility[startingSettings[K.visibility]!]
             conditionLabel.text = actualWeatherModel.condition["text"]
-             
+            dewPointLabel.text = actualWeatherModel.dewPoint[startingSettings[K.dewpoint]!]
+            windLabel.text = actualWeatherModel.wind[startingSettings[K.wind]!]
+            barometerLabel.text = actualWeatherModel.barometer[startingSettings[K.barometer]!]
+            
         }
     }
+}
+
+extension DecodedMetarViewController {
+    
+    func loadSettings(){
+        let url = Bundle.main.url(forResource: "Settings", withExtension: "plist")
+        guard  let _url = url else {
+            return
+        }
+        guard let settings = NSDictionary(contentsOf: _url) as? Dictionary<String,String> else {return}
+        startingSettings = settings
+        print(startingSettings)
+    }
+    
 }

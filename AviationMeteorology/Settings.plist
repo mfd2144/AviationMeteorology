@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>visibility</key>
+	<string>meters</string>
+	<key>temperature</key>
+	<string>celsius</string>
+	<key>dewpoint</key>
+	<string>celsius</string>
+	<key>wind</key>
+	<string>speed_kts</string>
+	<key>elevation</key>
+	<string>feet</string>
+	<key>barometer</key>
+	<string>hpa</string>
+</dict>
+</plist>
