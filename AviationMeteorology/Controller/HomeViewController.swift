@@ -62,6 +62,11 @@ extension HomeViewController:UISearchBarDelegate{
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:AviationAppDelegate{
+
+    // This information is not used in this page
+    func updatenearest(nearestAirportArray: [NearestAirportModel]) {
+            }
+    
     func updateMetar(weatherMetarArray: [WeathearMetarModel]) {
         metarModel = weatherMetarArray
         metarResultLable.text = metarModel![0].text

@@ -25,6 +25,7 @@
 		BA725A5F25CF1A92001D0FD0 /* NearestAirportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */; };
 		BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */; };
 		BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */; };
+		BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF108CA25D065F000E40065 /* NearestAirportCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestAirportModel.swift; sourceTree = "<group>"; };
 		BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedScreenLoadModel.swift; sourceTree = "<group>"; };
 		BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestViewController.swift; sourceTree = "<group>"; };
+		BAF108CA25D065F000E40065 /* NearestAirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestAirportCell.swift; sourceTree = "<group>"; };
 		EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AviationMeteorology.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0290B425B9B73B00FAFBC2 /* Main.storyboard */,
+				BAF108CA25D065F000E40065 /* NearestAirportCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */,
 				BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */,
 				BA0A9DBE25C81649002B661A /* AviationAppData.swift in Sources */,
+				BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
 				BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */,
 				BA6F21C325CA884200A10932 /* Constants.swift in Sources */,

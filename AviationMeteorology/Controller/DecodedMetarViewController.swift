@@ -47,7 +47,6 @@ class DecodedMetarViewController: UIViewController {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
         loadAbbrevations()
-        
     }
     
     func loadLabelValues(){
@@ -71,7 +70,6 @@ class DecodedMetarViewController: UIViewController {
         }
     }
 }
-
 
 extension DecodedMetarViewController {
     

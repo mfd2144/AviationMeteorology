@@ -24,4 +24,5 @@ struct K{
     static let flightRule = "flightRule"
     static let condition = "condition"
     static let airportName = "airportName"
+    static let NearestCellid = "NearestAirportCell"
 }

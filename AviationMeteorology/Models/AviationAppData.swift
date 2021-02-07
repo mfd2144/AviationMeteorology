@@ -18,6 +18,7 @@ enum fetchDataError: Error{
 protocol AviationAppDelegate {
     func updateMetar(weatherMetarArray: [WeathearMetarModel])
     func updateTaf(weatherTafArray :[WeatherTafModel])
+    func updatenearest(nearestAirportArray : [NearestAirportModel])
 }
 
 struct AviationAppData{
@@ -118,6 +119,7 @@ struct AviationAppData{
                 if let nearestJSON = value.array{
                     var nearestModel = [NearestAirportModel]()
                     nearestModel.append(contentsOf: nearestJSON.map({NearestAirportModel.init(data: $0)}))
+                    delegate?.updatenearest(nearestAirportArray: nearestModel)
                 }
             }
         }

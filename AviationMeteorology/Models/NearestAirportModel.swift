@@ -39,5 +39,8 @@ class NearestAirportModel:AviationApp{
     var radius: Dictionary<String,String>{
         returnDictionary("radius")
     }
+    var bearing: Int{
+        return data["radius"]["bearing"].intValue
+    }
     
 }
