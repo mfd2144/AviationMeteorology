@@ -1246,10 +1246,10 @@
             </objects>
             <point key="canvasLocation" x="2100" y="716"/>
         </scene>
-        <!--Near-->
+        <!--Nearest-->
         <scene sceneID="bO2-Pn-5Hk">
             <objects>
-                <viewController id="XUI-X3-sLX" sceneMemberID="viewController">
+                <viewController id="XUI-X3-sLX" customClass="NearestViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ar3-qC-OM5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1272,22 +1272,28 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="194"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="250" translatesAutoresizingMaskIntoConstraints="NO" id="vOt-Yd-oTG">
-                                        <rect key="frame" x="128" y="21" width="118" height="30"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vOt-Yd-oTG">
+                                        <rect key="frame" x="128" y="50" width="118" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="distanceSlider:" destination="XUI-X3-sLX" eventType="valueChanged" id="Of8-CD-zfq"/>
+                                        </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shx-tl-UBp">
-                                        <rect key="frame" x="166" y="58" width="42" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcD-7z-rjK">
+                                        <rect key="frame" x="164" y="132" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="XUI-X3-sLX" eventType="touchUpInside" id="tpQ-SC-spr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shx-tl-UBp">
+                                        <rect key="frame" x="167" y="96" width="41" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcD-7z-rjK">
-                                        <rect key="frame" x="164" y="112" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -1301,7 +1307,10 @@
                             <constraint firstItem="Rny-7J-b1W" firstAttribute="height" secondItem="bG9-dx-31D" secondAttribute="height" multiplier="0.65" id="xDX-8p-gSh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Near" image="location" catalog="system" id="ZCP-me-Kmh"/>
+                    <tabBarItem key="tabBarItem" title="Nearest" image="location" catalog="system" id="ZCP-me-Kmh"/>
+                    <connections>
+                        <outlet property="distanceLabel" destination="shx-tl-UBp" id="fZ0-KS-Kyj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYg-Y0-IpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

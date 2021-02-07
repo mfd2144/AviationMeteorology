@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var metarResultLable: UILabel!
     var metarModel : [WeathearMetarModel]?
     var tafModel : [WeatherTafModel]?
-    var weatherData = WeatherData()
+    var aviationAppData = AviationAppData()
     
     
     
@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         decodedButton.drawCorner( borderWidth: 2, cornerRadius: height)
         tafResultLabel.text = "-"
         metarResultLable.text = "-"
-        weatherData.delegate = self
+        aviationAppData.delegate = self
         decodedButton.isHidden = true
         
     }
@@ -54,25 +54,23 @@ extension HomeViewController:UISearchBarDelegate{
         tafResultLabel.text = ""
         metarResultLable.text = ""
         decodedButton.isHidden = true
-        self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.metar)
-        self.weatherData.weatherSource(codesICAO: [icaoCode],reportType: K.taf)
+        aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.metar)
+        aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.taf)
         searchBar.endEditing(true)
         searchBar.text = ""
     }
 }
 //MARK: - WeatherDataDelegate
-extension HomeViewController:WeatherDataDelegate{
+extension HomeViewController:AviationAppDelegate{
     func updateMetar(weatherMetarArray: [WeathearMetarModel]) {
         metarModel = weatherMetarArray
-        metarResultLable.text = metarModel![0].metarText
-        print(metarResultLable.text)
+        metarResultLable.text = metarModel![0].text
         decodedButton.isHidden = false
     }
     
     func updateTaf(weatherTafArray: [WeatherTafModel]) {
         tafModel = weatherTafArray
-        tafResultLabel.text = tafModel![0].tafText
-        print(tafResultLabel.text)
+        tafResultLabel.text = tafModel![0].text
     }
 }
 

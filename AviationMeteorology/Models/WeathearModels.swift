@@ -9,15 +9,47 @@
 import Foundation
 import SwiftyJSON
 
+class AviationApp{
+    let data: JSON
+    init(data: JSON) {
+        self.data = data
+    }
+    var icao: String{
+        return data["icao"].stringValue
+    }
+    var location: [String] {
+        for (key,array) in data["location"]{
+            if key == "coordinates"{
+                let newArray = array.arrayObject as! [Double]
+                return newArray.map{String(format: "%.4f", $0)}
+            }
+        }
+        return ["0","0"]
+    }
+    var text: String{
+        return data["raw_text"].stringValue
+    }
+    var elevation: Dictionary<String,String>{
+       returnDictionary("elevation")
+    }
+    
+    func returnDictionary(_ name: String)->Dictionary<String,String>{
+        var  newDic = Dictionary<String,String>()
+        for (key,value) in data[name]{
+            newDic[key] = value.stringValue
+        }
+        return newDic
+    }
+}
 
-struct WeathearMetarModel{
+
+
+
+class WeathearMetarModel: AviationApp{
   
     let weatherSettings = UnitsSettingTableViewController()
     
-    let data : JSON
-    var metarText: String{
-        return data["raw_text"].stringValue
-    }
+   
     var flightCategory: String{
         return  data["flight_category"].stringValue
     }
@@ -34,9 +66,7 @@ struct WeathearMetarModel{
         return data["station"]["name"].stringValue
         
     }
-    var icao: String{
-        return data["icao"].stringValue
-    }
+   
     var observedTime: String{
         let rawValue = data["observed"].stringValue
         return rawValue
@@ -44,9 +74,7 @@ struct WeathearMetarModel{
     var wind: Dictionary<String,String>{
    returnDictionary("wind")
     }
-    var elevation: Dictionary<String,String>{
-       returnDictionary("elevation")
-    }
+    
     
     var condition: Dictionary<String,String>{
         var  newDic = Dictionary<String,String>()
@@ -57,15 +85,7 @@ struct WeathearMetarModel{
         }
         return newDic
     }
-    var location: [String] {
-        for (key,array) in data["location"]{
-            if key == "coordinates"{
-                let newArray = array.arrayObject as! [Double]
-                return newArray.map{String(format: "%.4f", $0)}
-            }
-        }
-        return ["0","0"]
-    }
+  
     var dewPoint: Dictionary<String,String>{
         returnDictionary("dewpoint")
     }
@@ -77,44 +97,18 @@ struct WeathearMetarModel{
        returnDictionary("ceiling")
     }
   
-    init(data: JSON){
-        self.data = data
-        
-    }
-    private func returnDictionary(_ name: String)->Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data[name]{
-            newDic[key] = value.stringValue
-        }
-        return newDic
-    }
+
     
 }
 
 
-struct WeatherTafModel{
-    let data: JSON
-    var tafText :String{
-        return data["raw_text"].stringValue
-    }
-    
-    init(data:JSON){
-        self.data = data
-    }
+class WeatherTafModel: AviationApp{
 }
 
 
-
-extension WeathearMetarModel:Equatable{
-    static func ==(lhs: WeathearMetarModel, rhs: WeathearMetarModel) -> Bool {
+extension AviationApp:Equatable{
+    static func == (lhs: AviationApp, rhs: AviationApp) -> Bool {
         return lhs.data == rhs.data
     }
-    
 }
 
-extension WeatherTafModel:Equatable{
-    static func ==(lhs: WeatherTafModel, rhs: WeatherTafModel) -> Bool {
-        return lhs.data == rhs.data
-    }
-    
-}
