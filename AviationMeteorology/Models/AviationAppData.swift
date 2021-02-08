@@ -56,12 +56,12 @@ struct AviationAppData{
                 let data = try JSON(response.result.get())
                 completion(data,nil)
                 
+                
             }catch{
                 completion(nil,error)
+                
             }
         }
-        //        when there isn't any data
-        completion(nil,fetchDataError.emptyData)
     }
     
     
@@ -70,7 +70,8 @@ struct AviationAppData{
     //MARK: - Take user request about airports meteorology and respond
     func weatherRequest(codesICAO: [String],reportType: String){
         let stationsString = codeToString(codesICAO)
-        let urlString = "\(url)/\(reportType)/\(stationsString)/decoded"
+//        let urlString = "\(url)/\(reportType)/\(stationsString)/decoded"
+        let urlString = "\(url)/\(reportType)/ltat/decoded"
         fetchJSONData(urlString) { (json, error) in
             if let _error = error{
                 print(_error.localizedDescription)

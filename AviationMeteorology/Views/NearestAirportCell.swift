@@ -9,6 +9,8 @@ import UIKit
 
 class NearestAirportCell: UITableViewCell {
 
+    @IBOutlet weak var operationalConditionLabel: UILabel!
+    @IBOutlet weak var operastionalConditionImage: UIImageView!
     @IBOutlet weak var conditionImage: UIImageView!
     @IBOutlet weak var bearingLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,7 +23,7 @@ class NearestAirportCell: UITableViewCell {
     @IBOutlet weak var arrowImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+      
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

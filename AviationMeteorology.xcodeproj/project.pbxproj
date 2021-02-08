@@ -23,6 +23,7 @@
 		BA6F21C325CA884200A10932 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C225CA884200A10932 /* Constants.swift */; };
 		BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */; };
 		BA725A5F25CF1A92001D0FD0 /* NearestAirportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */; };
+		BAB5E75D25D120AF00DD139E /* NearestScreenLoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB5E75C25D120AF00DD139E /* NearestScreenLoadModel.swift */; };
 		BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */; };
 		BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */; };
 		BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF108CA25D065F000E40065 /* NearestAirportCell.swift */; };
@@ -48,6 +49,7 @@
 		BA6F21C225CA884200A10932 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsSettingTableViewController.swift; sourceTree = "<group>"; };
 		BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestAirportModel.swift; sourceTree = "<group>"; };
+		BAB5E75C25D120AF00DD139E /* NearestScreenLoadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestScreenLoadModel.swift; sourceTree = "<group>"; };
 		BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedScreenLoadModel.swift; sourceTree = "<group>"; };
 		BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestViewController.swift; sourceTree = "<group>"; };
 		BAF108CA25D065F000E40065 /* NearestAirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestAirportCell.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				BA0290C625BA02BF00FAFBC2 /* Extensions.swift */,
 				BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */,
+				BAB5E75C25D120AF00DD139E /* NearestScreenLoadModel.swift */,
 				BA0A9DBD25C81648002B661A /* AviationAppData.swift */,
 				BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */,
 				BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */,
@@ -273,6 +276,7 @@
 				BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */,
 				BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */,
 				BA0290B125B9B73B00FAFBC2 /* SceneDelegate.swift in Sources */,
+				BAB5E75D25D120AF00DD139E /* NearestScreenLoadModel.swift in Sources */,
 				BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */,
 				BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */,
 				BA0A9DBE25C81649002B661A /* AviationAppData.swift in Sources */,

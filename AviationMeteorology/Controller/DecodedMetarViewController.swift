@@ -46,12 +46,12 @@ class DecodedMetarViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
-        loadAbbrevations()
+
     }
     
     func loadLabelValues(){
         if let actualWeatherModel = weatherModel{
-            let screen = ScreenLoadModel(weatherModel: actualWeatherModel, startingSettings: startingSettings).loadData()
+            let screen = DecodedScreenLoadModel(weatherModel: actualWeatherModel, startingSettings: startingSettings).loadData()
             
             nameLabel.text = screen[K.airportName]
             ceilingLabel.text = screen[K.ceiling]
@@ -83,17 +83,8 @@ extension DecodedMetarViewController {
     }
     
 }
-//MARK: - Units Values
-extension DecodedMetarViewController{
-    func loadAbbrevations(){
-        var abbr = [String]()
-        for item in startingSettings.enumerated(){
-            let settings = Settings.init(rawValue: item.element.value)
-            abbr.append((settings?.info.abbr)!)
-        }
-        
-    }
-}
+
+
 
 
 

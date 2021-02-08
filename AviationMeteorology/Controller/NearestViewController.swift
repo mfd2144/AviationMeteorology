@@ -16,6 +16,9 @@ class NearestViewController: UIViewController, CLLocationManagerDelegate {
     var sliderValue = 10
     var aviationAppData = AviationAppData()
     var nearestAirportModel = [NearestAirportModel]()
+    var nearestScreenModel = [NearestScreenLoadModel]()
+    var startingSettings :Dictionary<String,String> = [:]
+  
     
     @IBOutlet weak var distanceLabel: UILabel!
     
@@ -30,12 +33,14 @@ class NearestViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func distanceSlider(_ sender: UISlider) {
         sliderValue = Int(sender.value / 10) * 10
-        distanceLabel.text = String(sliderValue)
+        distanceLabel.text = " \(String(sliderValue)) miles"
     }
     
     
     @IBAction func searchButtonPressed(_ sender:UIButton){
         locationManager.requestLocation()
+        loadSettings()
+        
     }
     
     
@@ -46,24 +51,28 @@ class NearestViewController: UIViewController, CLLocationManagerDelegate {
             let lon = location.coordinate.longitude
             aviationAppData.nearestRequest(lat, lon, sliderValue)
             
+            
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
-    func nearestScreenLoadModel(index: Int){
-        let name = nearestAirportModel[index].name
-        let status = nearestAirportModel[index].status
-        let type = nearestAirportModel[index].type
-        let iata = nearestAirportModel[index].iata
-        let city = nearestAirportModel[index].city
-        let icao = nearestAirportModel[index].icao
-        
+    func loadSettings(){
+        let url = Bundle.main.url(forResource: "Settings", withExtension: "plist")
+        guard  let _url = url else {
+            return
+        }
+        guard let settings = NSDictionary(contentsOf: _url) as? Dictionary<String,String> else {return}
+        startingSettings = settings
     }
+
 }
 extension NearestViewController: AviationAppDelegate{
     func updatenearest(nearestAirportArray: [NearestAirportModel]) {
         nearestAirportModel = nearestAirportArray
+        for singleModel in nearestAirportModel{
+            nearestScreenModel.append(NearestScreenLoadModel(nearestModel: singleModel, startingSettings:startingSettings))
+        }
         tableView.reloadData()
     }
     
@@ -81,19 +90,30 @@ extension NearestViewController: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: K.NearestCellid, for: indexPath) as? NearestAirportCell{
-            cell.nameLabel.text = nearestAirportModel[indexPath.row].name
-            let rotate = nearestAirportModel[indexPath.row].bearing
-            cell.bearingLabel.text = String(rotate)
-            if rotate != 0{
-                let val = .pi/(CGFloat(rotate)/180.0)
-                cell.arrowImage.transform = cell.arrowImage.transform.rotated(by: val)
+            let airportInfos = nearestScreenModel[indexPath.row].loadData()
+            cell.nameLabel.text = airportInfos[K.airportName]
+            cell.iataLabel.text = airportInfos[K.iata]
+            cell.icaoLabel.text = airportInfos[K.icao]
+            cell.bearingLabel.text = airportInfos[K.bearing]
+            if let latitude = airportInfos[K.latitude], let longitude = airportInfos[K.longitude]{
+                cell.coordinateLbel.text = "\(latitude) \(longitude)"
             }
+            cell.timeZoneLabel.text = airportInfos[K.timeZone]
+            cell.distanceLabel.text = airportInfos[K.radius]
+            if let city = airportInfos[K.city], let country = airportInfos[K.country]{
+                cell.cityCountryLabel.text = "\(city)    \(country)"
+            }
+            cell.operationalConditionLabel.text = airportInfos[K.status]
+            
+            let rotate = nearestAirportModel[indexPath.row].bearing
+
             return cell
         }
+        
         return UITableViewCell()
     }
     
     
+   
     
 }
-

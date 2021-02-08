@@ -26,3 +26,18 @@ struct K{
     static let airportName = "airportName"
     static let NearestCellid = "NearestAirportCell"
 }
+
+extension K{
+    static let status = "status"
+    static let country = "country"
+    static let city = "city"
+    static let icao = "icao"
+    static let iata = "iata"
+    static let timeZone = "timezone"
+    static let type = "type"
+    static let bearing = "bearing"
+    static let radius = "radius"
+    static let latitude = "latitude"
+    static let longitude = "longitudex"
+    
+}

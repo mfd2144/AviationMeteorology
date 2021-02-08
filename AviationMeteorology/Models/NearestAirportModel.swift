@@ -15,8 +15,8 @@ class NearestAirportModel:AviationApp{
     var status: String{
         return data["status"].stringValue
     }
-    var country: Dictionary<String,String>{
-        returnDictionary("country")
+    var country: String{
+        return data["country"]["name"].stringValue
     }
     var type: String{
         return data["type"].stringValue
@@ -37,10 +37,19 @@ class NearestAirportModel:AviationApp{
         return data["timezone"]["zone"].stringValue
     }
     var radius: Dictionary<String,String>{
-        returnDictionary("radius")
+        var  newDic = Dictionary<String,String>()
+        for (key,value) in data["radius"]{
+            if key == "miles" {
+                newDic[key] = "\(String(format: "%.3f", value.doubleValue)) Miles"
+            }else if key == "meters"{
+                newDic[key] = "\(value.doubleValue/1000) Km"
+            }
+        }
+        return newDic
     }
     var bearing: Int{
         return data["radius"]["bearing"].intValue
     }
     
+
 }

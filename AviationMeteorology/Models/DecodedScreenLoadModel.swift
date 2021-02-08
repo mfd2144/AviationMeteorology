@@ -1,13 +1,14 @@
 //
 //  File.swift
 //  AviationMeteorology
-//
+//  It takes model from decoded page, also from settings page and turn back information array to help fill the labels with measure identity abbrevations.
+//  This page decide to which settings use in user decoded page.
 //  Created by Mehmet fatih DOĞAN on 5.02.2021.
 //
 
 import Foundation
 
-struct ScreenLoadModel {
+struct DecodedScreenLoadModel {
     private let weatherModel: WeathearMetarModel
     private let startingSettings: Dictionary<String,String>
     
@@ -29,11 +30,13 @@ struct ScreenLoadModel {
     
     private func collectData(data: String?,_ constantName: String? = nil)->String{
 //       it help grasp data safetly, add abbrevations and if string value is empty return dash
-        if let dataString = data {
+        if data != "" {
+        if let dataString = data{
             if let abbr = settingsWithAbbr[constantName ?? ""]{
                 return "\(dataString) \(abbr)"
             }
             return dataString
+        }
         }
         return "-"
     }
