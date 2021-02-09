@@ -8,6 +8,7 @@
 import Foundation
 
 struct K{
+    static let routecellIdentification = "RouteCell"
     static let mainToDecoded = "MainToDecoded"
     static let metar = "metar"
     static let taf = "taf"
@@ -39,5 +40,6 @@ extension K{
     static let radius = "radius"
     static let latitude = "latitude"
     static let longitude = "longitudex"
+    static let distance = "distance"
     
 }

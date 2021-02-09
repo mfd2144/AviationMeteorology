@@ -9,6 +9,7 @@ import UIKit
 
 
 class UnitsSettingTableViewController: UITableViewController {
+    
     var startingSettings :Dictionary<String,String> = [:]
     
     @IBOutlet weak var hpaButton: UIButton!
@@ -25,11 +26,17 @@ class UnitsSettingTableViewController: UITableViewController {
     @IBOutlet weak var visibiltyMiles: UIButton!
     @IBOutlet weak var feetButton: UIButton!
     @IBOutlet weak var metersButton: UIButton!
+    @IBOutlet weak var distanceKmButton: UIButton!
+    @IBOutlet weak var coordinateDegreeButton: UIButton!
+    @IBOutlet weak var coordinateDecimalButton: UIButton!
+    @IBOutlet weak var distanceMilesButton: UIButton!
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +44,12 @@ class UnitsSettingTableViewController: UITableViewController {
         loadScreen()
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
     }
+    
     //MARK: - A Button Pressed
 //    When click a box,one of the following actions will start
     @IBAction func elevationPressed(_ sender: UIButton){
@@ -80,6 +89,15 @@ class UnitsSettingTableViewController: UITableViewController {
         }
         saveSettings()
     }
+    @IBAction func distanceButtonPressed(_ sender: UIButton){
+        startingSettings[K.distance] = sender.currentTitle == "1" ? Settings.meters.rawValue : Settings.miles.rawValue
+        saveSettings()
+        
+    }
+    @IBAction func coordinateButtonPressed(_ sender: UIButton){
+        startingSettings[K.coordinates] = sender.currentTitle == "1" ? Settings.degrees.rawValue : Settings.decimal.rawValue
+        saveSettings()
+    }
     @IBAction func defaultButtonPressed(_ sender: UIBarButtonItem) {
         loadDefaults()
     }
@@ -89,6 +107,7 @@ class UnitsSettingTableViewController: UITableViewController {
 
 
 //MARK: - Settings and Screen Manupilation
+
 extension UnitsSettingTableViewController{
 //   Uusing Setting.plist to load starting settings
     func loadSettings(){
@@ -101,6 +120,7 @@ extension UnitsSettingTableViewController{
     }
 //    Save settings changes in plist
     func saveSettings(){
+        
         guard let url = Bundle.main.url(forResource: "Settings", withExtension: "plist") else {
             return
         }
@@ -112,6 +132,7 @@ extension UnitsSettingTableViewController{
         }
         
         loadScreen()
+        print(startingSettings)
     }
 //    load screen according to startingSettings
     func loadScreen(){
@@ -123,6 +144,8 @@ extension UnitsSettingTableViewController{
             case K.elevation:loadScreenModel(buttons: [feetButton,metersButton],rawValue:value)
             case K.temperature: loadScreenModel(buttons: [celsiusButton,fahreinheitButton],rawValue:value)
             case K.visibility: loadScreenModel(buttons: [visibiltyMiles,visibilityMeters],rawValue:value)
+            case K.distance: loadScreenModel(buttons: [distanceMilesButton,distanceKmButton],rawValue:value)
+            case K.coordinates: loadScreenModel(buttons: [coordinateDegreeButton,coordinateDecimalButton],rawValue:value)
             default:
                 continue
             }
@@ -151,7 +174,7 @@ extension UnitsSettingTableViewController{
             K.dewpoint: Settings.celsius.rawValue,
             K.barometer: Settings.hg.rawValue, 
             K.visibility: Settings.meters.rawValue
-//            K.coordinates: Settings.degree.rawValue
+//            K.coordinates: Settings.degrees.rawValue
         ]
         startingSettings = defaultSettings
         saveSettings()
@@ -174,6 +197,8 @@ enum Settings:String{
     case kpa = "kpa"
     case hg = "hg"
     case mb = "mb"
+    case degrees = "degrees"
+    case decimal = "decimal"
     
 }
 
@@ -193,6 +218,8 @@ extension Settings{
         case .speed_mps: return (index: 1,abbr: "MPS")
         case .speed_kts: return (index: 2,abbr: "Knot")
         case .speed_kph: return (index: 3,abbr: "KPH")
+        case .degrees: return (index: 0,abbr: "")
+        case .decimal: return (index: 1,abbr: "")
         }
     }
 }

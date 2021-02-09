@@ -17,6 +17,8 @@
 		BA038F4025CC2A4800DACE39 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA038F3F25CC2A4800DACE39 /* Settings.plist */; };
 		BA0A9DBE25C81649002B661A /* AviationAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A9DBD25C81648002B661A /* AviationAppData.swift */; };
 		BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */; };
+		BA4E96B425D2A55900A16EC7 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B325D2A55900A16EC7 /* RouteModel.swift */; };
+		BA4E96B725D2C79200A16EC7 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */; };
 		BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D97F825C7445800B3512B /* HomeViewController.swift */; };
 		BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA69E35325C88CA000BED030 /* ApiCode.plist */; };
 		BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */; };
@@ -27,6 +29,7 @@
 		BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */; };
 		BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */; };
 		BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF108CA25D065F000E40065 /* NearestAirportCell.swift */; };
+		BAF13D2225D27C7300226578 /* RouteMeteorologyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF13D2125D27C7300226578 /* RouteMeteorologyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,8 @@
 		BA038F3F25CC2A4800DACE39 /* Settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		BA0A9DBD25C81648002B661A /* AviationAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviationAppData.swift; sourceTree = "<group>"; };
 		BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeathearModels.swift; sourceTree = "<group>"; };
+		BA4E96B325D2A55900A16EC7 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA69E35325C88CA000BED030 /* ApiCode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiCode.plist; sourceTree = "<group>"; };
 		BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedMetarViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedScreenLoadModel.swift; sourceTree = "<group>"; };
 		BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestViewController.swift; sourceTree = "<group>"; };
 		BAF108CA25D065F000E40065 /* NearestAirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestAirportCell.swift; sourceTree = "<group>"; };
+		BAF13D2125D27C7300226578 /* RouteMeteorologyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMeteorologyViewController.swift; sourceTree = "<group>"; };
 		EF252CEAE80B4DDD8B6DAB78 /* Pods_AviationMeteorology.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AviationMeteorology.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -115,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0290B425B9B73B00FAFBC2 /* Main.storyboard */,
+				BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */,
 				BAF108CA25D065F000E40065 /* NearestAirportCell.swift */,
 			);
 			path = Views;
@@ -127,6 +134,7 @@
 				BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */,
 				BAB5E75C25D120AF00DD139E /* NearestScreenLoadModel.swift */,
 				BA0A9DBD25C81648002B661A /* AviationAppData.swift */,
+				BA4E96B325D2A55900A16EC7 /* RouteModel.swift */,
 				BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */,
 				BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */,
 				BA6F21C225CA884200A10932 /* Constants.swift */,
@@ -141,6 +149,7 @@
 				BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */,
 				BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */,
 				BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */,
+				BAF13D2125D27C7300226578 /* RouteMeteorologyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -270,9 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAF13D2225D27C7300226578 /* RouteMeteorologyViewController.swift in Sources */,
 				BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */,
 				BA725A5F25CF1A92001D0FD0 /* NearestAirportModel.swift in Sources */,
 				BA0290AF25B9B73B00FAFBC2 /* AppDelegate.swift in Sources */,
+				BA4E96B725D2C79200A16EC7 /* RouteTableViewCell.swift in Sources */,
 				BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */,
 				BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */,
 				BA0290B125B9B73B00FAFBC2 /* SceneDelegate.swift in Sources */,
@@ -280,6 +291,7 @@
 				BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */,
 				BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */,
 				BA0A9DBE25C81649002B661A /* AviationAppData.swift in Sources */,
+				BA4E96B425D2A55900A16EC7 /* RouteModel.swift in Sources */,
 				BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
 				BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */,

@@ -16,8 +16,8 @@ enum fetchDataError: Error{
 }
 
 protocol AviationAppDelegate {
-    func updateMetar(weatherMetarArray: [WeathearMetarModel])
-    func updateTaf(weatherTafArray :[WeatherTafModel])
+    func updateMetar(weatherMetarArray: [WeathearMetarModel],logic: Bool)
+    func updateTaf(weatherTafArray :[WeatherTafModel],logic: Bool)
     func updatenearest(nearestAirportArray : [NearestAirportModel])
 }
 
@@ -70,8 +70,7 @@ struct AviationAppData{
     //MARK: - Take user request about airports meteorology and respond
     func weatherRequest(codesICAO: [String],reportType: String){
         let stationsString = codeToString(codesICAO)
-//        let urlString = "\(url)/\(reportType)/\(stationsString)/decoded"
-        let urlString = "\(url)/\(reportType)/ltat/decoded"
+        let urlString = "\(url)/\(reportType)/\(stationsString)/decoded"
         fetchJSONData(urlString) { (json, error) in
             if let _error = error{
                 print(_error.localizedDescription)
@@ -90,11 +89,13 @@ struct AviationAppData{
                     if metarTafArray != [] && reportType == K.metar{
                         var modelMetar = [WeathearMetarModel]()
                         modelMetar.append(contentsOf: metarTafArray.map({WeathearMetarModel.init(data: $0)}))
-                        delegate?.updateMetar(weatherMetarArray: modelMetar)
+                        let logic = true
+                        delegate?.updateMetar(weatherMetarArray: modelMetar,logic:logic)
                     }else if  metarTafArray != [] && reportType == K.taf{
                         var modelTaf = [WeatherTafModel]()
                         modelTaf.append(contentsOf: metarTafArray.map({WeatherTafModel.init(data: $0)}))
-                        delegate?.updateTaf(weatherTafArray: modelTaf)
+                        let logic = true
+                        delegate?.updateTaf(weatherTafArray: modelTaf,logic: logic)
                     }
                 }
             }

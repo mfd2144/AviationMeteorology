@@ -54,9 +54,11 @@ struct NearestScreenLoadModel {
         let timeZone = collectData(data: nearestModel.timeZone)
         let latitude = collectData(data: nearestModel.latitude[startingSettings[K.coordinates]!])
         let longitude = collectData(data: nearestModel.longitude[startingSettings[K.coordinates]!])
-        let radiusDistance = collectData(data: nearestModel.radius[startingSettings[K.visibility]!])
+        let radiusDistance = collectData(data: nearestModel.radius[startingSettings[K.distance]!])
         let bearing = collectData(data: String(nearestModel.bearing))
-       
+        let elevation = collectData(data: nearestModel.elevation[startingSettings[K.elevation]!],K.elevation)
+        
+        
        
        
                     
@@ -72,7 +74,8 @@ struct NearestScreenLoadModel {
             K.bearing:bearing,
             K.radius:radiusDistance,
             K.latitude:latitude,
-            K.longitude:longitude
+            K.longitude:longitude,
+            K.elevation:elevation
             
         ]
         return values

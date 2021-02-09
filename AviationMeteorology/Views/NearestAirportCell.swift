@@ -21,6 +21,8 @@ class NearestAirportCell: UITableViewCell {
     @IBOutlet weak var cityCountryLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var altitudeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
       

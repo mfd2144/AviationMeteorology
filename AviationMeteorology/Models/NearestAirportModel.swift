@@ -40,9 +40,10 @@ class NearestAirportModel:AviationApp{
         var  newDic = Dictionary<String,String>()
         for (key,value) in data["radius"]{
             if key == "miles" {
-                newDic[key] = "\(String(format: "%.3f", value.doubleValue)) Miles"
+                newDic[key] = "\(String(format: "%.2f", value.doubleValue)) miles"
             }else if key == "meters"{
-                newDic[key] = "\(value.doubleValue/1000) Km"
+            let km = value.doubleValue/1000
+                newDic[key] = "\(String(format: "%.1f", km)) km"
             }
         }
         return newDic

@@ -62,18 +62,18 @@ extension HomeViewController:UISearchBarDelegate{
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:AviationAppDelegate{
-
+  
     // This information is not used in this page
     func updatenearest(nearestAirportArray: [NearestAirportModel]) {
             }
     
-    func updateMetar(weatherMetarArray: [WeathearMetarModel]) {
+    func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool) {
         metarModel = weatherMetarArray
         metarResultLable.text = metarModel![0].text
         decodedButton.isHidden = false
     }
     
-    func updateTaf(weatherTafArray: [WeatherTafModel]) {
+    func updateTaf(weatherTafArray: [WeatherTafModel], logic: Bool) {
         tafModel = weatherTafArray
         tafResultLabel.text = tafModel![0].text
     }
