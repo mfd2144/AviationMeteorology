@@ -19,6 +19,8 @@
 		BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */; };
 		BA4E96B425D2A55900A16EC7 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B325D2A55900A16EC7 /* RouteModel.swift */; };
 		BA4E96B725D2C79200A16EC7 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */; };
+		BA4E96BA25D309CD00A16EC7 /* SunTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B925D309CD00A16EC7 /* SunTimesModel.swift */; };
+		BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */; };
 		BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D97F825C7445800B3512B /* HomeViewController.swift */; };
 		BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA69E35325C88CA000BED030 /* ApiCode.plist */; };
 		BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */; };
@@ -48,6 +50,8 @@
 		BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeathearModels.swift; sourceTree = "<group>"; };
 		BA4E96B325D2A55900A16EC7 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
+		BA4E96B925D309CD00A16EC7 /* SunTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimesModel.swift; sourceTree = "<group>"; };
+		BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimesViewController.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA69E35325C88CA000BED030 /* ApiCode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiCode.plist; sourceTree = "<group>"; };
 		BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedMetarViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				BA4E96B325D2A55900A16EC7 /* RouteModel.swift */,
 				BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */,
 				BA725A5E25CF1A92001D0FD0 /* NearestAirportModel.swift */,
+				BA4E96B925D309CD00A16EC7 /* SunTimesModel.swift */,
 				BA6F21C225CA884200A10932 /* Constants.swift */,
 			);
 			path = Models;
@@ -150,6 +155,7 @@
 				BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */,
 				BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */,
 				BAF13D2125D27C7300226578 /* RouteMeteorologyViewController.swift */,
+				BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -290,11 +296,13 @@
 				BAB5E75D25D120AF00DD139E /* NearestScreenLoadModel.swift in Sources */,
 				BADC6FB625CD4AF000F6DA93 /* DecodedScreenLoadModel.swift in Sources */,
 				BAEA8CB825CDDDE600C96D9D /* NearestViewController.swift in Sources */,
+				BA4E96BA25D309CD00A16EC7 /* SunTimesModel.swift in Sources */,
 				BA0A9DBE25C81649002B661A /* AviationAppData.swift in Sources */,
 				BA4E96B425D2A55900A16EC7 /* RouteModel.swift in Sources */,
 				BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
 				BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */,
+				BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */,
 				BA6F21C325CA884200A10932 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

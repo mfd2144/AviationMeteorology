@@ -21,7 +21,7 @@ class NearestViewController: UIViewController {
     var nearestAirportModel = [NearestAirportModel]()
     var nearestScreenModel = [NearestScreenLoadModel]()
     var startingSettings :Dictionary<String,String> = [:]
-  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -36,13 +36,13 @@ class NearestViewController: UIViewController {
         findButtom.drawCorner(cornerRadius: findButtom.frame.size.height/2)
         
     }
-//    adjust radius of search
+    //    adjust radius of search
     @IBAction func distanceSlider(_ sender: UISlider) {
         sliderValue = Int(sender.value / 10) * 10
         distanceLabel.text = " \(String(sliderValue)) miles"
     }
     
-//    call the results
+    //    call the results
     @IBAction func searchButtonPressed(_ sender:UIButton){
         locationManager.requestLocation()
         loadSettings()
@@ -63,7 +63,7 @@ class NearestViewController: UIViewController {
 
 
 extension NearestViewController: AviationAppDelegate{
-
+    
     
     func updatenearest(nearestAirportArray: [NearestAirportModel]){
         nearestAirportModel = nearestAirportArray
@@ -106,12 +106,12 @@ extension NearestViewController: UITableViewDataSource, UITableViewDelegate{
             cell.operationalConditionLabel.text = airportInfos[K.status]
             if cell.operationalConditionLabel.text == "Operational"{
                 cell.operastionalConditionImage.image = UIImage(systemName: "checkmark.circle")
-            
+                
             }else{
                 cell.operastionalConditionImage.image = UIImage(systemName:"questionmark.circle" )
                 
-                }
-               
+            }
+            
             let rotate = nearestAirportModel[indexPath.row].bearing
             cell.arrowImage.transform = addImageView(angle: rotate).transform
             return cell
@@ -133,16 +133,18 @@ extension NearestViewController: UITableViewDataSource, UITableViewDelegate{
 //MARK: - Location Delegate
 
 extension  NearestViewController: CLLocationManagerDelegate{
-func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    if let location = locations.last{
-        locationManager.stopUpdatingLocation()
-        let lat = location.coordinate.latitude
-        let lon = location.coordinate.longitude
-        aviationAppData.nearestRequest(lat, lon, sliderValue)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last{
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            aviationAppData.nearestRequest(lat, lon, sliderValue)
+        }
     }
-}
     
-func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print(error)
-}
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    func updatenearest(sunTimesModel: SunTimesModel) {
+    }
 }

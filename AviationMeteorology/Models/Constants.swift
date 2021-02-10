@@ -8,6 +8,7 @@
 import Foundation
 
 struct K{
+    static let routeToDetailIdentification = "RouteToDetail"
     static let routecellIdentification = "RouteCell"
     static let mainToDecoded = "MainToDecoded"
     static let metar = "metar"

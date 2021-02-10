@@ -22,13 +22,23 @@ class RouteMeteorologyViewController: UIViewController {
     var routeModel: [RouteModel]?
     var tafLogic: Bool = false
     var metarLogic: Bool = false
+    var selectedSection: Int?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         aviationAppData.delegate = self
         tableView.rowHeight = 70
+
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
     
     @IBAction func buttonPressed(_ sender: UIButton){
         let codesArray : [String] = [textField1.text!, textField2.text!,textField3.text!, textField4.text!, textField5.text!,textField6.text!]
@@ -36,12 +46,9 @@ class RouteMeteorologyViewController: UIViewController {
         let codes = Array(set)
         aviationAppData.weatherRequest(codesICAO: codes, reportType: K.metar)
         aviationAppData.weatherRequest(codesICAO: codes, reportType: K.taf)
-        print("pressed")
-        
-        
-        
-        
     }
+    
+    
     func createNewTafMetarUnionModel(){
         if metarLogic && tafLogic{
             routeModel = nil
@@ -86,6 +93,8 @@ class RouteMeteorologyViewController: UIViewController {
     
     
 }
+
+
 extension RouteMeteorologyViewController: AviationAppDelegate{
     func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool) {
         metarModel = weatherMetarArray
@@ -102,8 +111,11 @@ extension RouteMeteorologyViewController: AviationAppDelegate{
     //    be empty
     func updatenearest(nearestAirportArray: [NearestAirportModel]) {
     }
-
+    func updatenearest(sunTimesModel: SunTimesModel) {
+    }
 }
+
+
 
 extension RouteMeteorologyViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -137,6 +149,22 @@ extension RouteMeteorologyViewController: UITableViewDataSource, UITableViewDele
         
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if ((routeModel?[indexPath.section].metarModel) != nil) && indexPath.row == 1{
+            selectedSection = indexPath.section
+            performSegue(withIdentifier: K.routeToDetailIdentification, sender: self)
+        
+        }
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationVC = segue.destination as! DecodedMetarViewController
+        if let model = routeModel?[selectedSection!].metarModel  {
+            destinationVC.weatherModel = model
+        }
+       
+    }
 
 }

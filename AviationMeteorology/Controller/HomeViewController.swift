@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
         metarResultLable.text = "-"
         aviationAppData.delegate = self
         decodedButton.isHidden = true
-        
     }
     
     @IBAction func decodePressed(_ sender: UIButton) {
@@ -62,11 +61,8 @@ extension HomeViewController:UISearchBarDelegate{
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:AviationAppDelegate{
-  
-    // This information is not used in this page
-    func updatenearest(nearestAirportArray: [NearestAirportModel]) {
-            }
-    
+   
+
     func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool) {
         metarModel = weatherMetarArray
         metarResultLable.text = metarModel![0].text
@@ -76,6 +72,13 @@ extension HomeViewController:AviationAppDelegate{
     func updateTaf(weatherTafArray: [WeatherTafModel], logic: Bool) {
         tafModel = weatherTafArray
         tafResultLabel.text = tafModel![0].text
+    }
+    
+    // These two functions is not used in this page
+  
+    func updatenearest(nearestAirportArray: [NearestAirportModel]) {
+            }
+    func updatenearest(sunTimesModel: SunTimesModel) {
     }
 }
 

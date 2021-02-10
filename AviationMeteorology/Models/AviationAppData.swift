@@ -15,10 +15,12 @@ enum fetchDataError: Error{
     case emptyData
 }
 
+
 protocol AviationAppDelegate {
     func updateMetar(weatherMetarArray: [WeathearMetarModel],logic: Bool)
     func updateTaf(weatherTafArray :[WeatherTafModel],logic: Bool)
     func updatenearest(nearestAirportArray : [NearestAirportModel])
+    func updatenearest(sunTimesModel: SunTimesModel)
 }
 
 struct AviationAppData{
@@ -122,6 +124,31 @@ struct AviationAppData{
                     var nearestModel = [NearestAirportModel]()
                     nearestModel.append(contentsOf: nearestJSON.map({NearestAirportModel.init(data: $0)}))
                     delegate?.updatenearest(nearestAirportArray: nearestModel)
+                }
+            }
+        }
+    }
+    
+    
+    func sunTimesAirport(icao: String){
+        let urlString =  "\(url)/station/\(icao)/suntimes"
+
+        fetchJSONData(urlString) { (json, error) in
+            if let _error = error{
+                print(_error.localizedDescription)
+            }
+            if let _json = json{
+                sunTimesDataResult(_json)
+            }
+        }
+
+    }
+    private func sunTimesDataResult(_ json:JSON){
+        for (key,value) in json{
+            if key == "data"{
+                if let sunTimesJSON = value.array?[0]{
+                    let model = SunTimesModel.init(data: sunTimesJSON)
+                    delegate?.updatenearest(sunTimesModel: model)
                 }
             }
         }
