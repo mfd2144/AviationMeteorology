@@ -13,16 +13,19 @@ class SunTimesViewController: UIViewController {
     var sunTimesModel: SunTimesModel?
     var choseTimeZone = "local"
     
+    @IBOutlet weak var icaoCodeLabel: UILabel!
     @IBOutlet weak var icaoTextField: UITextField!
     @IBOutlet weak var civilDawnLabel: UILabel!
     @IBOutlet weak var civilDuskLabel: UILabel!
     @IBOutlet weak var sunRiseLabel: UILabel!
+    @IBOutlet weak var seachButton: UIButton!
     @IBOutlet weak var sunSetLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        seachButton.drawCorner(cornerRadius: seachButton.frame.size.height/2)
         aviationAppData.delegate = self
+        icaoCodeLabel.text = ""
     }
     
     @IBAction func searchPressed(_ sender: UIButton){
@@ -30,6 +33,7 @@ class SunTimesViewController: UIViewController {
             aviationAppData.sunTimesAirport(icao: (icaoTextField?.text)!)
             icaoTextField.endEditing(true)
             icaoTextField.text = ""
+            
         }
         
     }
@@ -44,20 +48,21 @@ class SunTimesViewController: UIViewController {
         }
     }
     func localFiller(){
-        if let dusk = sunTimesModel?.civil_dusk_local, let dawn = sunTimesModel?.civil_dawn_local, let sunSet = sunTimesModel?.sun_set_local, let sunRise = sunTimesModel?.sun_rise_local{
+        if let dusk = sunTimesModel?.civil_dusk_local, let dawn = sunTimesModel?.civil_dawn_local, let sunSet = sunTimesModel?.sun_set_local, let sunRise = sunTimesModel?.sun_rise_local, let icao = sunTimesModel?.icao{
             civilDuskLabel.text = dusk
             civilDawnLabel.text = dawn
             sunSetLabel.text = sunSet
             sunRiseLabel.text = sunRise
-            
+            icaoCodeLabel.text = icao
         }
     }
     func utcFiller(){
-        if let dusk = sunTimesModel?.civil_dusk_utc, let dawn = sunTimesModel?.civil_dawn_utc, let sunSet = sunTimesModel?.sun_set_utc, let sunRise = sunTimesModel?.sun_rise_utc{
+        if let dusk = sunTimesModel?.civil_dusk_utc, let dawn = sunTimesModel?.civil_dawn_utc, let sunSet = sunTimesModel?.sun_set_utc, let sunRise = sunTimesModel?.sun_rise_utc, let icao = sunTimesModel?.icao{
             civilDuskLabel.text = dusk
             civilDawnLabel.text = dawn
             sunSetLabel.text = sunSet
             sunRiseLabel.text = sunRise
+            icaoCodeLabel.text = icao
         }
         
     }

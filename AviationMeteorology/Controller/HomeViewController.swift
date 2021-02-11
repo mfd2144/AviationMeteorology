@@ -18,7 +18,10 @@ class HomeViewController: UIViewController {
     var aviationAppData = AviationAppData()
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,14 @@ class HomeViewController: UIViewController {
         metarResultLable.text = "-"
         aviationAppData.delegate = self
         decodedButton.isHidden = true
+       
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func decodePressed(_ sender: UIButton) {

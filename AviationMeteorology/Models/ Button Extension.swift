@@ -13,6 +13,7 @@ extension UIButton{
         button.layer.borderWidth = borderWidth
         button.layer.borderColor = CGColor
         let edgeInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        button.backgroundColor = UIColor(named: "buttonSet")
         button.titleEdgeInsets = edgeInset
     }
 }

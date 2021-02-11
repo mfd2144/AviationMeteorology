@@ -13,7 +13,7 @@
 		BA0290B625B9B73B00FAFBC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0290B425B9B73B00FAFBC2 /* Main.storyboard */; };
 		BA0290B825B9B73C00FAFBC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0290B725B9B73C00FAFBC2 /* Assets.xcassets */; };
 		BA0290BB25B9B73C00FAFBC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0290B925B9B73C00FAFBC2 /* LaunchScreen.storyboard */; };
-		BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0290C625BA02BF00FAFBC2 /* Extensions.swift */; };
+		BA0290C725BA02BF00FAFBC2 /*  Button Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0290C625BA02BF00FAFBC2 /*  Button Extension.swift */; };
 		BA038F4025CC2A4800DACE39 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA038F3F25CC2A4800DACE39 /* Settings.plist */; };
 		BA0A9DBE25C81649002B661A /* AviationAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0A9DBD25C81648002B661A /* AviationAppData.swift */; };
 		BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */; };
@@ -21,6 +21,7 @@
 		BA4E96B725D2C79200A16EC7 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */; };
 		BA4E96BA25D309CD00A16EC7 /* SunTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96B925D309CD00A16EC7 /* SunTimesModel.swift */; };
 		BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */; };
+		BA4E96C325D4040800A16EC7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */; };
 		BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D97F825C7445800B3512B /* HomeViewController.swift */; };
 		BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA69E35325C88CA000BED030 /* ApiCode.plist */; };
 		BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */; };
@@ -44,7 +45,7 @@
 		BA0290B725B9B73C00FAFBC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA0290BA25B9B73C00FAFBC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA0290BC25B9B73C00FAFBC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA0290C625BA02BF00FAFBC2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BA0290C625BA02BF00FAFBC2 /*  Button Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Button Extension.swift"; sourceTree = "<group>"; };
 		BA038F3F25CC2A4800DACE39 /* Settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		BA0A9DBD25C81648002B661A /* AviationAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviationAppData.swift; sourceTree = "<group>"; };
 		BA2C44F825C93C2600ECAE38 /* WeathearModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeathearModels.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		BA4E96B925D309CD00A16EC7 /* SunTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimesModel.swift; sourceTree = "<group>"; };
 		BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimesViewController.swift; sourceTree = "<group>"; };
+		BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA69E35325C88CA000BED030 /* ApiCode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiCode.plist; sourceTree = "<group>"; };
 		BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedMetarViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +136,7 @@
 		BA0290C425BA027700FAFBC2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BA0290C625BA02BF00FAFBC2 /* Extensions.swift */,
+				BA0290C625BA02BF00FAFBC2 /*  Button Extension.swift */,
 				BADC6FB525CD4AF000F6DA93 /* DecodedScreenLoadModel.swift */,
 				BAB5E75C25D120AF00DD139E /* NearestScreenLoadModel.swift */,
 				BA0A9DBD25C81648002B661A /* AviationAppData.swift */,
@@ -155,6 +157,7 @@
 				BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */,
 				BAEA8CB725CDDDE600C96D9D /* NearestViewController.swift */,
 				BAF13D2125D27C7300226578 /* RouteMeteorologyViewController.swift */,
+				BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */,
 				BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */,
 			);
 			path = Controller;
@@ -288,6 +291,7 @@
 				BAF13D2225D27C7300226578 /* RouteMeteorologyViewController.swift in Sources */,
 				BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */,
 				BA725A5F25CF1A92001D0FD0 /* NearestAirportModel.swift in Sources */,
+				BA4E96C325D4040800A16EC7 /* SettingsTableViewController.swift in Sources */,
 				BA0290AF25B9B73B00FAFBC2 /* AppDelegate.swift in Sources */,
 				BA4E96B725D2C79200A16EC7 /* RouteTableViewCell.swift in Sources */,
 				BA2C44F925C93C2600ECAE38 /* WeathearModels.swift in Sources */,
@@ -301,7 +305,7 @@
 				BA4E96B425D2A55900A16EC7 /* RouteModel.swift in Sources */,
 				BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
-				BA0290C725BA02BF00FAFBC2 /* Extensions.swift in Sources */,
+				BA0290C725BA02BF00FAFBC2 /*  Button Extension.swift in Sources */,
 				BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */,
 				BA6F21C325CA884200A10932 /* Constants.swift in Sources */,
 			);

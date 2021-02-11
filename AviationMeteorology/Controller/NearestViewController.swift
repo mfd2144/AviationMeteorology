@@ -106,9 +106,11 @@ extension NearestViewController: UITableViewDataSource, UITableViewDelegate{
             cell.operationalConditionLabel.text = airportInfos[K.status]
             if cell.operationalConditionLabel.text == "Operational"{
                 cell.operastionalConditionImage.image = UIImage(systemName: "checkmark.circle")
+                cell.operastionalConditionImage.tintColor = .green
                 
             }else{
                 cell.operastionalConditionImage.image = UIImage(systemName:"questionmark.circle" )
+                cell.operastionalConditionImage.tintColor = .red
                 
             }
             

@@ -25,7 +25,7 @@ class DecodedMetarViewController: UIViewController {
     @IBOutlet weak var dewPointLabel: UILabel!
     @IBOutlet weak var cloudLabel: UILabel!
     @IBOutlet weak var ceilingLabel: UILabel!
-    @IBOutlet weak var elevationLabel: UIBarButtonItem!
+
     @IBOutlet weak var visibilityLabel: UILabel!
     
     
@@ -65,7 +65,7 @@ class DecodedMetarViewController: UIViewController {
             windLabel.text = screen[K.wind]
             barometerLabel.text = screen[K.barometer]
             thermometerLabel.text = screen[K.temperature]
-            elevationLabel.title = screen[K.elevation]
+          
             
         }
     }

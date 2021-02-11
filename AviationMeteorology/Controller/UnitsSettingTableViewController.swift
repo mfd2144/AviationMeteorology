@@ -132,7 +132,6 @@ extension UnitsSettingTableViewController{
         }
         
         loadScreen()
-        print(startingSettings)
     }
 //    load screen according to startingSettings
     func loadScreen(){
