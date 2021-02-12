@@ -23,7 +23,9 @@
 		BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */; };
 		BA4E96C325D4040800A16EC7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */; };
 		BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D97F825C7445800B3512B /* HomeViewController.swift */; };
+		BA60816D25D66BD000E8026D /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60816C25D66BD000E8026D /* AnimationView.swift */; };
 		BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA69E35325C88CA000BED030 /* ApiCode.plist */; };
+		BA6A6E1B25D5D8EC00A2F318 /* AnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6A6E1A25D5D8EB00A2F318 /* AnimationView.xib */; };
 		BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */; };
 		BA6F21C325CA884200A10932 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C225CA884200A10932 /* Constants.swift */; };
 		BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */; };
@@ -55,7 +57,9 @@
 		BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimesViewController.swift; sourceTree = "<group>"; };
 		BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BA60816C25D66BD000E8026D /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		BA69E35325C88CA000BED030 /* ApiCode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiCode.plist; sourceTree = "<group>"; };
+		BA6A6E1A25D5D8EB00A2F318 /* AnimationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationView.xib; sourceTree = "<group>"; };
 		BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedMetarViewController.swift; sourceTree = "<group>"; };
 		BA6F21C225CA884200A10932 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsSettingTableViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			children = (
 				BA0290B425B9B73B00FAFBC2 /* Main.storyboard */,
 				BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */,
+				BA6A6E1A25D5D8EB00A2F318 /* AnimationView.xib */,
+				BA60816C25D66BD000E8026D /* AnimationView.swift */,
 				BAF108CA25D065F000E40065 /* NearestAirportCell.swift */,
 			);
 			path = Views;
@@ -236,6 +242,7 @@
 				BA0290B825B9B73C00FAFBC2 /* Assets.xcassets in Resources */,
 				BA0290B625B9B73B00FAFBC2 /* Main.storyboard in Resources */,
 				BA038F4025CC2A4800DACE39 /* Settings.plist in Resources */,
+				BA6A6E1B25D5D8EC00A2F318 /* AnimationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +313,7 @@
 				BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
 				BA0290C725BA02BF00FAFBC2 /*  Button Extension.swift in Sources */,
+				BA60816D25D66BD000E8026D /* AnimationView.swift in Sources */,
 				BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */,
 				BA6F21C325CA884200A10932 /* Constants.swift in Sources */,
 			);

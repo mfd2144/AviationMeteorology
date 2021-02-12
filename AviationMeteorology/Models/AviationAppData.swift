@@ -17,8 +17,8 @@ enum fetchDataError: Error{
 
 
 protocol AviationAppDelegate {
-    func updateMetar(weatherMetarArray: [WeathearMetarModel],logic: Bool)
-    func updateTaf(weatherTafArray :[WeatherTafModel],logic: Bool)
+    func updateMetar(weatherMetarArray: [WeathearMetarModel]?,logic: Bool)
+    func updateTaf(weatherTafArray :[WeatherTafModel]?,logic: Bool)
     func updatenearest(nearestAirportArray : [NearestAirportModel])
     func updatenearest(sunTimesModel: SunTimesModel)
 }
@@ -98,6 +98,9 @@ struct AviationAppData{
                         modelTaf.append(contentsOf: metarTafArray.map({WeatherTafModel.init(data: $0)}))
                         let logic = true
                         delegate?.updateTaf(weatherTafArray: modelTaf,logic: logic)
+                    }else{
+                        reportType == K.taf ? delegate?.updateTaf(weatherTafArray: nil, logic: false) : delegate?.updateMetar(weatherMetarArray: nil, logic: false)
+                        print("Ç")
                     }
                 }
             }

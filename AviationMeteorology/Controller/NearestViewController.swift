@@ -73,9 +73,9 @@ extension NearestViewController: AviationAppDelegate{
         tableView.reloadData()
     }
     //    Both informations are not used here
-    func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool){
+    func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool){
     }
-    func updateTaf(weatherTafArray: [WeatherTafModel], logic: Bool){
+    func updateTaf(weatherTafArray: [WeatherTafModel]?, logic: Bool){
     }
 }
 

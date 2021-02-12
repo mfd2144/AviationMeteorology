@@ -69,11 +69,11 @@ class SunTimesViewController: UIViewController {
     
 }
 extension SunTimesViewController: AviationAppDelegate{
-    func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool) {
+    func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
         
     }
     
-    func updateTaf(weatherTafArray: [WeatherTafModel], logic: Bool) {
+    func updateTaf(weatherTafArray: [WeatherTafModel]?, logic: Bool) {
         
     }
     

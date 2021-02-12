@@ -13,14 +13,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var airportSearchPort: UISearchBar!
     @IBOutlet weak var tafResultLabel: UILabel!
     @IBOutlet weak var metarResultLable: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     var metarModel : [WeathearMetarModel]?
     var tafModel : [WeatherTafModel]?
     var aviationAppData = AviationAppData()
+    var tafLogic = true
+    var metarLogic = true
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        loadingIndicator.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -68,21 +73,37 @@ extension HomeViewController:UISearchBarDelegate{
         aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.taf)
         searchBar.endEditing(true)
         searchBar.text = ""
+        loadingIndicator.isHidden = false
+        loadingIndicator.startAnimating()
     }
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:AviationAppDelegate{
+
    
 
-    func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool) {
-        metarModel = weatherMetarArray
+    func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
+        metarLogic = logic
+        logic == false ? alertUser(metarResultLable) : nil
+        if let weatherModel = weatherMetarArray{
+        metarModel = weatherModel
         metarResultLable.text = metarModel![0].text
         decodedButton.isHidden = false
+        loadingIndicator.stopAnimating()
+        loadingIndicator.isHidden = true
+    }
     }
     
-    func updateTaf(weatherTafArray: [WeatherTafModel], logic: Bool) {
-        tafModel = weatherTafArray
+    func updateTaf(weatherTafArray: [WeatherTafModel]?, logic: Bool) {
+        tafLogic = logic
+        logic == false ? alertUser(tafResultLabel) : nil
+        if let weatherModel = weatherTafArray{
+        tafModel = weatherModel
         tafResultLabel.text = tafModel![0].text
+        loadingIndicator.stopAnimating()
+        loadingIndicator.isHidden = true
+    }
+        
     }
     
     // These two functions is not used in this page
@@ -91,6 +112,19 @@ extension HomeViewController:AviationAppDelegate{
             }
     func updatenearest(sunTimesModel: SunTimesModel) {
     }
+    
+    func alertUser(_ textArea: UILabel){
+        loadingIndicator.stopAnimating()
+        loadingIndicator.isHidden = true
+        textArea.text = "-"
+        if !tafLogic, !metarLogic{
+            let alert = UIAlertController(title: "Alert", message: "There isn't any reported TAF or METAR", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 

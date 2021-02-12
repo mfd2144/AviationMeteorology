@@ -8,10 +8,9 @@
 import UIKit
 
 class RouteMeteorologyViewController: UIViewController {
+    var shapeLayer: CAShapeLayer?
+    let path = UIBezierPath()
     
-    
-    weak var shapeLayer: CAShapeLayer?
-    var orderNumber = 1
     
     
     @IBOutlet weak var routeView: UIView!
@@ -33,11 +32,11 @@ class RouteMeteorologyViewController: UIViewController {
         aviationAppData.delegate = self
         tableView.rowHeight = 70
         
-    
+        
     }
     
     
-    func createNewTafMetarUnionModel(){
+    func createNewTafMetarUnionModel(){// create new mix model from taf and metar
         if metarLogic && tafLogic{
             routeModel = nil
             guard let metarArray = metarModel, let tafArray = tafModel else {return}
@@ -75,22 +74,25 @@ class RouteMeteorologyViewController: UIViewController {
             tafLogic = false
             tableView.reloadData()
         }
-        
+    }
+    @IBAction func clearRouteScreen(_ sender: UIButton){
+        searchBar.isUserInteractionEnabled = true
+        clearTextField()
         
     }
-    
     
 }
 
 
+
 extension RouteMeteorologyViewController: AviationAppDelegate{
-    func updateMetar(weatherMetarArray: [WeathearMetarModel], logic: Bool) {
+    func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
         metarModel = weatherMetarArray
         metarLogic = logic
         createNewTafMetarUnionModel()
     }
     
-    func updateTaf(weatherTafArray: [WeatherTafModel], logic: Bool) {
+    func updateTaf(weatherTafArray: [WeatherTafModel]?, logic: Bool) {
         tafModel = weatherTafArray
         tafLogic = logic
         createNewTafMetarUnionModel()
@@ -159,43 +161,40 @@ extension RouteMeteorologyViewController: UITableViewDataSource, UITableViewDele
 extension RouteMeteorologyViewController{
     
     
-    func drawLine(order: Int,icao: String) {
-        // remove old shape layer if any
+    
+    func drawLine(icao: [String] ) {
         
-        //        self.shapeLayer?.removeFromSuperlayer()
+        //         remove old shape layer if any
+        self.shapeLayer?.removeFromSuperlayer()
         
         // create whatever path you want
         
-        let path = UIBezierPath()
         let xPoint = routeView.frame.size.width
         let yPoint = routeView.frame.size.height
         
+        addLabel(name: icao[0],xPoint: xPoint/6-50, yPoint: yPoint/3*2)
+        let count = icao.count
         
-        
-        switch order {
-        case 1:
-            addLabel(name: "LTAT",xPoint: xPoint/6-50, yPoint: yPoint/3*2,angle: 0)
-        case 2:
+        if count > 1{
             path.move(to: CGPoint(x: xPoint/6, y: yPoint/3*2))
             path.addLine(to: CGPoint(x: xPoint/6*2, y: yPoint/3))
-            addLabel(name: icao,xPoint: xPoint/6*2-50, yPoint: yPoint/3-20,angle: 315)
-        case 3:
+            addLabel(name: icao[1],xPoint: xPoint/6*2-50, yPoint: yPoint/3-20)
+        }
+        if count > 2{
             path.move(to: CGPoint(x: xPoint/6*2, y: yPoint/3))
             path.addLine(to: CGPoint(x: xPoint/6*3, y: yPoint/3 ))
-            addLabel(name: icao,xPoint: xPoint/6*3-25, yPoint: yPoint/3,angle: 315)
-        case 4:
+            addLabel(name: icao[2],xPoint: xPoint/6*3-25, yPoint: yPoint/3)
+        }
+        if count > 3{
             path.move(to: CGPoint(x: xPoint/6*3, y: yPoint/3 ))
             path.addLine(to: CGPoint(x: xPoint/6*4, y: yPoint/3 ))
-            addLabel(name: icao,xPoint: xPoint/6*4, yPoint: yPoint/3-20,angle: 315)
-        case 5:
+            addLabel(name: icao[3],xPoint: xPoint/6*4, yPoint: yPoint/3-20)
+        }
+        if count > 4{
             path.move(to: CGPoint(x: xPoint/6*4, y: yPoint/3 ))
             path.addLine(to: CGPoint(x: xPoint/6*5, y: yPoint/3*2))
-            addLabel(name: icao,xPoint: xPoint/6*5, yPoint: yPoint/3*2,angle: 0)
-        default:
-            return
-            
+            addLabel(name: icao[4],xPoint: xPoint/6*5, yPoint: yPoint/3*2)
         }
-        
         //         create shape layer for that path
         
         let shapeLayer = CAShapeLayer()
@@ -204,87 +203,76 @@ extension RouteMeteorologyViewController{
         shapeLayer.lineWidth = 4
         shapeLayer.path = path.cgPath
         
-        // animate it
+        // request data
+        aviationAppData.weatherRequest(codesICAO: icao, reportType: K.metar)
+        aviationAppData.weatherRequest(codesICAO: icao, reportType: K.taf)
         
-        routeView.layer.addSublayer(shapeLayer)
+        // animate it
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
-        animation.duration = 0.5
+        animation.duration = 2
         shapeLayer.add(animation, forKey: "MyAnimation")
-        
-        // save shape layer
         self.shapeLayer = shapeLayer
+        routeView.layer.addSublayer(shapeLayer)
     }
-    func addLabel(name: String,xPoint: CGFloat, yPoint: CGFloat,angle: CGFloat){
+    func addLabel(name: String,xPoint: CGFloat, yPoint: CGFloat){
         
         let textLabel = UILabel(frame: CGRect(x:  xPoint, y: yPoint, width: 50, height: 20))
         textLabel.text = name
         textLabel.tag = 101
-        if angle != 0{
-            let newAngle = CGFloat(.pi/angle/180)
-            textLabel.transform = textLabel.transform.rotated(by: newAngle)}
         textLabel.font = UIFont(name: "System", size: CGFloat(7))
         routeView.addSubview(textLabel)
+        
     }
 }
 extension RouteMeteorologyViewController: UISearchBarDelegate{
     
-
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if range.length >  0{
-            let char = text.cString(using: String.Encoding.utf8)!
-            strcmp(char, "\\b") == -92 ? print("delete") : nil
-            clearTextField()
-        }
-        return true
-    }
-
+//
+//    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//
+//        if range.length >  0{
+//            let char = text.cString(using: String.Encoding.utf8)!
+//            strcmp(char, "\\b") == -92 ? clearTextField() : nil
+//
+//        }
+//        return true
+//    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-   
-//        uppercase users input
+        
+        //        uppercase users input
         searchBar.text = searchBar.text?.uppercased()
         if (searchBar.text?.count == 4 || searchBar.text?.count == 9 || searchBar.text?.count == 14 || searchBar.text?.count == 19) {
-//            add dash between airports
+            //            add dash between airports
             searchBar.text?.append("-")
-
-            let icaoCodes = searchBar.text?.split(separator: "-").last
-            drawLine(order: orderNumber, icao: String(icaoCodes!))
-            orderNumber += 1
-            //        our control variable for searchbar
+            
         }
         if searchBar.text?.count == 24{
             //            it start when user enters 5 icao codes
             searchBar.endEditing(true)
             searchBar.isUserInteractionEnabled = false
-            let icaoCodes = searchBar.text?.split(separator: "-").last
-            drawLine(order: orderNumber, icao: String(icaoCodes!))
+            let icaoCodes = searchBar.text?.split(separator: "-").map({String($0)})
+            drawLine(icao: icaoCodes!)
             searchBarSearchButtonClicked(searchBar)
-
         }
     }
-
-
+    
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        var icaoCodes = Array<String>()
-        icaoCodes.append(contentsOf: (searchBar.text?.split(separator: "-").map({String($0)}))!)
+        guard let icaoCodes = searchBar.text?.split(separator: "-").map({String($0)}) else { return }
         searchBar.endEditing(true)
-        aviationAppData.weatherRequest(codesICAO: icaoCodes, reportType: K.metar)
-        aviationAppData.weatherRequest(codesICAO: icaoCodes, reportType: K.taf)
-
+        drawLine(icao: icaoCodes)
+        
     }
+    
+    
     func clearTextField(){
         while routeView.viewWithTag(101) != nil{
             let textfield = routeView.viewWithTag(101)
             textfield!.removeFromSuperview()
         }
-        shapeLayer?.path = nil
-        self.shapeLayer?.removeFromSuperlayer()
-        
-        
-        
         searchBar.text = nil
-        orderNumber = 1
+        self.shapeLayer?.removeFromSuperlayer()
     }
 }
 
