@@ -12,8 +12,7 @@ import UIKit
 class DecodedMetarViewController: UIViewController {
  
     var weatherModel : WeathearMetarModel?
-    var startingSettings :Dictionary<String,String> = [:]
-    
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var coordinatesLabel: UILabel!
@@ -36,7 +35,7 @@ class DecodedMetarViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSettings()
+//        loadSettings()
         loadLabelValues()
         
         
@@ -50,7 +49,7 @@ class DecodedMetarViewController: UIViewController {
     
     func loadLabelValues(){
         if let actualWeatherModel = weatherModel{
-            let screen = DecodedScreenLoadModel(weatherModel: actualWeatherModel, startingSettings: startingSettings).loadData()
+            let screen = DecodedScreenLoadModel(weatherModel: actualWeatherModel).loadData()
             
             nameLabel.text = screen[K.airportName]
             ceilingLabel.text = screen[K.ceiling]
@@ -70,18 +69,7 @@ class DecodedMetarViewController: UIViewController {
     }
 }
 
-extension DecodedMetarViewController {
-    
-    func loadSettings(){
-        let url = Bundle.main.url(forResource: "Settings", withExtension: "plist")
-        guard  let _url = url else {
-            return
-        }
-        guard let settings = NSDictionary(contentsOf: _url) as? Dictionary<String,String> else {return}
-        startingSettings = settings
-    }
-    
-}
+
 
 
 

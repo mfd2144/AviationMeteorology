@@ -19,13 +19,14 @@ class NearestViewController: UIViewController {
     var locationManager = CLLocationManager()
     var sliderValue = 10
     var aviationAppData = AviationAppData()
-    var nearestAirportModel = [NearestAirportModel]()
+    var nearestAirportModel : [NearestAirportModel]?
     var nearestScreenModel = [NearestScreenLoadModel]()
-    var startingSettings :Dictionary<String,String> = [:]
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.isHidden = true
+      
     }
     
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class NearestViewController: UIViewController {
         tableView.rowHeight = 200
         findButtom.drawCorner(cornerRadius: findButtom.frame.size.height/2)
         
+       
     }
     //    adjust radius of search
     @IBAction func distanceSlider(_ sender: UISlider) {
@@ -48,36 +50,22 @@ class NearestViewController: UIViewController {
         locationManager.requestLocation()
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
-        loadSettings()
-        
-        
-    }
-    
-    
-    func loadSettings(){
-        let url = Bundle.main.url(forResource: "Settings", withExtension: "plist")
-        guard  let _url = url else {
-            return
-        }
-        guard let settings = NSDictionary(contentsOf: _url) as? Dictionary<String,String> else {return}
-        startingSettings = settings
+        nearestAirportModel?.removeAll()
+        tableView.reloadData()
     }
 }
-
-
 
 extension NearestViewController: AviationAppDelegate{
     func errorDidThrow(error: Error) {
         aviationAppData.userAlert(sender: self, message: error.localizedDescription)
         activityIndicator.stopAnimating()
     }
-    
-    
-    
+  
     func updatenearest(nearestAirportArray: [NearestAirportModel]){
         nearestAirportModel = nearestAirportArray
-        for singleModel in nearestAirportModel{
-            nearestScreenModel.append(NearestScreenLoadModel(nearestModel: singleModel, startingSettings:startingSettings))
+        guard let _ = nearestAirportModel else { return }
+        for singleModel in nearestAirportModel!{
+            nearestScreenModel.append(NearestScreenLoadModel(nearestModel: singleModel))
         }
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
@@ -94,7 +82,7 @@ extension NearestViewController: AviationAppDelegate{
 //MARK: - TableView Data Source and Delegate
 extension NearestViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nearestAirportModel.count
+        return nearestAirportModel?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,9 +113,10 @@ extension NearestViewController: UITableViewDataSource, UITableViewDelegate{
                 
             }
             
-            let rotate = nearestAirportModel[indexPath.row].bearing
-            cell.arrowImage.transform = addImageView(angle: rotate).transform
-            return cell
+            if let rotate = nearestAirportModel?[indexPath.row].bearing{
+                cell.arrowImage.transform = addImageView(angle: rotate).transform
+            }
+                return cell
         }
         return UITableViewCell()
     }

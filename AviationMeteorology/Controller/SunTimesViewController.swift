@@ -88,9 +88,7 @@ extension SunTimesViewController: AviationAppDelegate{
     }
     
     func updatenearest(sunTimesModel: SunTimesModel) {
-        print("1")
         self.sunTimesModel = sunTimesModel
-        print(sunTimesModel.data)
         choseTimeZone == "local" ? localFiller() : utcFiller()
 
         

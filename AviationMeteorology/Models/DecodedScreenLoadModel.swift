@@ -10,21 +10,24 @@ import Foundation
 
 struct DecodedScreenLoadModel {
     private let weatherModel: WeathearMetarModel
-    private let startingSettings: Dictionary<String,String>
+    private let actualSettings: SettingsModel = StartingSettings.startingSettingsModel
     
     private var settingsWithAbbr: Dictionary<String,String>{
-        var abbr =  Dictionary<String,String>()
-        for item in startingSettings.enumerated(){
-            if let settings = Settings.init(rawValue: item.element.value){
-                abbr[item.element.key] = settings.info.abbr
-            }
-        }
+        let abbr = [
+            K.barometer:actualSettings.barometer,
+            K.wind:actualSettings.wind,
+            K.dewpoint:actualSettings.dewpoint,
+            K.coordinates:actualSettings.coordinates,
+            K.distance:actualSettings.distance,
+            K.elevation:actualSettings.elevation,
+            K.visibility:actualSettings.visibility,
+            K.temperature:actualSettings.temperature
+        ]
         return abbr
     }
     
-    init(weatherModel: WeathearMetarModel,startingSettings: Dictionary<String,String>){
+    init(weatherModel: WeathearMetarModel){
         self.weatherModel = weatherModel
-        self.startingSettings = startingSettings
     }
     
     
@@ -44,17 +47,17 @@ struct DecodedScreenLoadModel {
     
     func loadData()->Dictionary<String,String>{
         let name = collectData(data: weatherModel.name)
-        let ceiling = collectData(data: weatherModel.ceiling[startingSettings[K.elevation]!],K.elevation)
+        let ceiling = collectData(data: weatherModel.ceiling[actualSettings.elevation],K.elevation)
         let cloudName = collectData(data: weatherModel.clouds)
         let flightRule = collectData(data: weatherModel.flightCategory)
         let time = collectData(data: weatherModel.observedTime)
-        let visibility = collectData(data: weatherModel.visibility[startingSettings[K.visibility]!],K.visibility)
+        let visibility = collectData(data: weatherModel.visibility[actualSettings.visibility],K.visibility)
         let condition = collectData(data: weatherModel.condition["text"] )
-        let dewpoint = collectData(data: weatherModel.dewPoint[startingSettings[K.temperature]!], K.temperature)
-        let wind = collectData(data: weatherModel.wind[startingSettings[K.wind]!], K.wind)
-        let barometer = collectData(data: weatherModel.barometer[startingSettings[K.barometer]!], K.barometer)
-        let temperature  = collectData(data: weatherModel.temperature[startingSettings[K.temperature]!], K.temperature)
-        let elevation = collectData(data: weatherModel.elevation[startingSettings[K.elevation]!])
+        let dewpoint = collectData(data: weatherModel.dewPoint[actualSettings.dewpoint], K.temperature)
+        let wind = collectData(data: weatherModel.wind[actualSettings.wind], K.wind)
+        let barometer = collectData(data: weatherModel.barometer[actualSettings.barometer], K.barometer)
+        let temperature  = collectData(data: weatherModel.temperature[actualSettings.temperature], K.temperature)
+        let elevation = collectData(data: weatherModel.elevation[actualSettings.elevation])
         let coordinatesValue =  " \(weatherModel.location.first ?? "-"), \(weatherModel.location.last ?? "-")"
                     
         let values = [

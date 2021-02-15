@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
     var tafLogic = true
     var metarLogic = true
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true

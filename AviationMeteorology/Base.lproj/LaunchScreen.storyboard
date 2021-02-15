@@ -20,15 +20,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.69803921568627447" green="0.9882352941176471" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avimetlaunch.png" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-f4-xDn">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avimetlaunch" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-f4-xDn">
+                                <rect key="frame" x="-305" y="-235" width="1024" height="1366"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1366" id="tb2-YW-HE5"/>
+                                    <constraint firstAttribute="width" constant="1024" id="wLN-xy-DUG"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="A4x-f4-xDn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AXB-7A-1Rx"/>
                             <constraint firstItem="K1I-OB-F2Q" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="HIV-ty-y19"/>
+                            <constraint firstItem="A4x-f4-xDn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IEr-Ng-DXv"/>
                             <constraint firstAttribute="bottom" secondItem="K1I-OB-F2Q" secondAttribute="bottom" id="J1X-ft-e9Y"/>
                             <constraint firstItem="K1I-OB-F2Q" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="R2Z-1z-7gf"/>
                             <constraint firstItem="K1I-OB-F2Q" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ejX-FT-pTr"/>
@@ -41,7 +46,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avimetlaunch.png" width="1024" height="1024"/>
+        <image name="avimetlaunch" width="1024" height="1366"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

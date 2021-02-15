@@ -11,21 +11,24 @@ import Foundation
 
 struct NearestScreenLoadModel {
     private let nearestModel: NearestAirportModel
-    private let startingSettings: Dictionary<String,String>
+    private let actualSettings: SettingsModel = StartingSettings.startingSettingsModel
     
     private var settingsWithAbbr: Dictionary<String,String>{
-        var abbr =  Dictionary<String,String>()
-        for item in startingSettings.enumerated(){
-            if let settings = Settings.init(rawValue: item.element.value){
-                abbr[item.element.key] = settings.info.abbr
-            }
-        }
+        let abbr = [
+            K.barometer:actualSettings.barometer,
+            K.wind:actualSettings.wind,
+            K.dewpoint:actualSettings.dewpoint,
+            K.coordinates:actualSettings.coordinates,
+            K.distance:actualSettings.distance,
+            K.elevation:actualSettings.elevation,
+            K.visibility:actualSettings.visibility,
+            K.temperature:actualSettings.temperature
+        ]
         return abbr
     }
     
-    init(nearestModel: NearestAirportModel,startingSettings: Dictionary<String,String>){
+    init(nearestModel: NearestAirportModel){
         self.nearestModel = nearestModel
-        self.startingSettings = startingSettings
     }
     
     
@@ -52,16 +55,12 @@ struct NearestScreenLoadModel {
         let iata = collectData(data: nearestModel.iata)
         let icao = collectData(data: nearestModel.icao)
         let timeZone = collectData(data: nearestModel.timeZone)
-        let latitude = collectData(data: nearestModel.latitude[startingSettings[K.coordinates]!])
-        let longitude = collectData(data: nearestModel.longitude[startingSettings[K.coordinates]!])
-        let radiusDistance = collectData(data: nearestModel.radius[startingSettings[K.distance]!])
+        let latitude = collectData(data: nearestModel.latitude[actualSettings.coordinates])
+        let longitude = collectData(data: nearestModel.longitude[actualSettings.coordinates])
+        let radiusDistance = collectData(data: nearestModel.radius[actualSettings.distance])
         let bearing = collectData(data: String(nearestModel.bearing))
-        let elevation = collectData(data: nearestModel.elevation[startingSettings[K.elevation]!],K.elevation)
-        
-        
-       
-       
-                    
+        let elevation = collectData(data: nearestModel.elevation[actualSettings.elevation],K.elevation)
+              
         let values = [
             K.airportName:name,
             K.status:status,
