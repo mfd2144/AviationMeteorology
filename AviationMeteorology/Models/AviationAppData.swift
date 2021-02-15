@@ -12,7 +12,13 @@ import CoreLocation
 
 
 enum fetchDataError: Error{
-    case emptyData
+    case noConnection
+    var description: String{
+        switch  self {
+        case .noConnection:return "kjkjk"
+        }
+    }
+    
 }
 
 
@@ -21,6 +27,7 @@ protocol AviationAppDelegate {
     func updateTaf(weatherTafArray :[WeatherTafModel]?,logic: Bool)
     func updatenearest(nearestAirportArray : [NearestAirportModel])
     func updatenearest(sunTimesModel: SunTimesModel)
+    func errorDidThrow(error: Error)
 }
 
 struct AviationAppData{
@@ -75,7 +82,7 @@ struct AviationAppData{
         let urlString = "\(url)/\(reportType)/\(stationsString)/decoded"
         fetchJSONData(urlString) { (json, error) in
             if let _error = error{
-                print(_error.localizedDescription)
+                delegate?.errorDidThrow(error: _error)
             }
             if let _json = json{
                 weatherDataResult(_json,reportType)
@@ -100,7 +107,6 @@ struct AviationAppData{
                         delegate?.updateTaf(weatherTafArray: modelTaf,logic: logic)
                     }else{
                         reportType == K.taf ? delegate?.updateTaf(weatherTafArray: nil, logic: false) : delegate?.updateMetar(weatherMetarArray: nil, logic: false)
-                        print("Ç")
                     }
                 }
             }
@@ -112,7 +118,7 @@ struct AviationAppData{
         let urlString =  "\(url)/station/lat/\(lat)/lon/\(lon)/radius/\(radius)"
         fetchJSONData(urlString) { (json, error) in
             if let _error = error{
-                print(_error.localizedDescription)
+                delegate?.errorDidThrow(error: _error)
             }
             if let _json = json{
                 nearestDataResult(_json)
@@ -138,10 +144,14 @@ struct AviationAppData{
 
         fetchJSONData(urlString) { (json, error) in
             if let _error = error{
-                print(_error.localizedDescription)
+                print("3")
+                delegate?.errorDidThrow(error: _error)
             }
             if let _json = json{
+                print("77")
+                print(_json)
                 sunTimesDataResult(_json)
+                
             }
         }
 
@@ -149,7 +159,7 @@ struct AviationAppData{
     private func sunTimesDataResult(_ json:JSON){
         for (key,value) in json{
             if key == "data"{
-                if let sunTimesJSON = value.array?[0]{
+                if let sunTimesJSON = value.array?.first{
                     let model = SunTimesModel.init(data: sunTimesJSON)
                     delegate?.updatenearest(sunTimesModel: model)
                 }
@@ -157,6 +167,14 @@ struct AviationAppData{
         }
     }
     
+    func userAlert(sender:UIViewController,message: String){
+        let alert = UIAlertController(title: "", message: message , preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel){_ in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        sender.present(alert, animated: true, completion: nil)
+    }
     
 }
 

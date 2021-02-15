@@ -12,17 +12,17 @@ class RouteMeteorologyViewController: UIViewController {
     let path = UIBezierPath()
     
     
-    
     @IBOutlet weak var routeView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var clearButton : UIButton!
     
     var metarModel : [WeathearMetarModel]?
     var tafModel : [WeatherTafModel]?
     var aviationAppData = AviationAppData()
     var routeModel: [RouteModel]?
-    var tafLogic: Bool = false
-    var metarLogic: Bool = false
+    var tafLogic: Bool?
+    var metarLogic: Bool?
     var selectedSection: Int?
     var airportsSet = Set<String>()
     
@@ -31,49 +31,61 @@ class RouteMeteorologyViewController: UIViewController {
         super.viewDidLoad()
         aviationAppData.delegate = self
         tableView.rowHeight = 70
-        
-        
+        clearButton.drawCorner(cornerRadius: clearButton.frame.height/2)
+    
     }
     
     
     func createNewTafMetarUnionModel(){// create new mix model from taf and metar
-        if metarLogic && tafLogic{
-            routeModel = nil
-            guard let metarArray = metarModel, let tafArray = tafModel else {return}
-            for tafItem in tafArray{
-                //   first we start wandering in the tafs
-                var checklogic = false
-                for metarItem in metarArray{
-                    //   then for every piece of taf we looking same metar data and create new route model
+        
+//        check both reports have came
+        guard let _metarLogic = metarLogic,let _tafLogic = tafLogic else {return}
+        
+//        if both have nothing
+        if !_metarLogic && !_tafLogic {
+            aviationAppData.userAlert(sender: self, message: "There isn't any reported Metar/TAF")
+        }
+       
+        routeModel = nil
+        metarLogic = nil
+        tafLogic = nil
+        guard let metarArray = metarModel, let tafArray = tafModel else {
+            return
+            
+        }
+        for tafItem in tafArray{
+            //   first we start wandering in the tafs
+            var checklogic = false
+            for metarItem in metarArray{
+                //   then for every piece of taf we looking same metar data and create new route model
+                
+                if tafItem.icao == metarItem.icao{
+                    let newRouteModel = RouteModel(icao: metarItem.icao, metar: metarItem.text, taf: tafItem.text, metarModel:metarItem )
+                    checklogic = true
                     
-                    if tafItem.icao == metarItem.icao{
-                        let newRouteModel = RouteModel(icao: metarItem.icao, metar: metarItem.text, taf: tafItem.text, metarModel:metarItem )
-                        checklogic = true
-                        
-                        //         this part let us append new information in route model otheerwise(use append directly) its value doesn't change(nil)
-                        if routeModel != nil{
-                            routeModel!.append(newRouteModel)
-                        }else{
-                            routeModel = [newRouteModel]
-                        }
-                        
-                    }
-                }
-                //                some airport doesn't have metar information, if we don't find any metar this part just add taf in pour model
-                if !checklogic{
-                    let newRouteModel = RouteModel(icao: tafItem.icao, metar:nil, taf: tafItem.text, metarModel:nil )
+                    //         this part let us append new information in route model otheerwise(use append directly) its value doesn't change(nil)
                     if routeModel != nil{
                         routeModel!.append(newRouteModel)
                     }else{
                         routeModel = [newRouteModel]
                     }
+                    
                 }
             }
-            
-            metarLogic = false
-            tafLogic = false
-            tableView.reloadData()
+            //                some airport doesn't have metar information, if we don't find any metar this part just add taf in pour model
+            if !checklogic{
+                let newRouteModel = RouteModel(icao: tafItem.icao, metar:nil, taf: tafItem.text, metarModel:nil )
+                if routeModel != nil{
+                    routeModel!.append(newRouteModel)
+                }else{
+                    routeModel = [newRouteModel]
+                }
+            }
         }
+        
+        
+        tableView.reloadData()
+        
     }
     @IBAction func clearRouteScreen(_ sender: UIButton){
         searchBar.isUserInteractionEnabled = true
@@ -86,6 +98,10 @@ class RouteMeteorologyViewController: UIViewController {
 
 
 extension RouteMeteorologyViewController: AviationAppDelegate{
+    func errorDidThrow(error: Error) {
+        aviationAppData.userAlert(sender: self, message: error.localizedDescription)
+    }
+    
     func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
         metarModel = weatherMetarArray
         metarLogic = logic
@@ -227,16 +243,16 @@ extension RouteMeteorologyViewController{
 }
 extension RouteMeteorologyViewController: UISearchBarDelegate{
     
-//
-//    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//
-//        if range.length >  0{
-//            let char = text.cString(using: String.Encoding.utf8)!
-//            strcmp(char, "\\b") == -92 ? clearTextField() : nil
-//
-//        }
-//        return true
-//    }
+    //
+    //    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    //
+    //        if range.length >  0{
+    //            let char = text.cString(using: String.Encoding.utf8)!
+    //            strcmp(char, "\\b") == -92 ? clearTextField() : nil
+    //
+    //        }
+    //        return true
+    //    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -259,9 +275,13 @@ extension RouteMeteorologyViewController: UISearchBarDelegate{
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text != ""{
         guard let icaoCodes = searchBar.text?.split(separator: "-").map({String($0)}) else { return }
         searchBar.endEditing(true)
-        drawLine(icao: icaoCodes)
+            drawLine(icao: icaoCodes)
+        }else{
+            aviationAppData.userAlert(sender: self, message: "Please Enter ICAO Codes ")
+        }
         
     }
     

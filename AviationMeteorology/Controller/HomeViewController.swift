@@ -8,6 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+
     
     @IBOutlet weak var decodedButton: UIButton!
     @IBOutlet weak var airportSearchPort: UISearchBar!
@@ -36,8 +37,7 @@ class HomeViewController: UIViewController {
         metarResultLable.text = "-"
         aviationAppData.delegate = self
         decodedButton.isHidden = true
-       
-        
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -64,13 +64,28 @@ class HomeViewController: UIViewController {
 
 //MARK: - SearchBarDelegate
 extension HomeViewController:UISearchBarDelegate{
+    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         let icaoCode = searchBar.text!
+        if icaoCode.count != 4 {
+            tafLogic = false
+            metarLogic = false
+            alertUser(nil,message: "You must enter 4 character in search field")
+            searchBar.text = ""
+            return
+        }
+        
+//        Clear reports which belongs before search
         tafResultLabel.text = ""
         metarResultLable.text = ""
+    
         decodedButton.isHidden = true
+        
         aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.metar)
         aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.taf)
+        
         searchBar.endEditing(true)
         searchBar.text = ""
         loadingIndicator.isHidden = false
@@ -79,6 +94,10 @@ extension HomeViewController:UISearchBarDelegate{
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:AviationAppDelegate{
+    func errorDidThrow(error: Error) {
+        aviationAppData.userAlert(sender: self, message: error.localizedDescription)
+    }
+    
 
    
 
@@ -113,16 +132,16 @@ extension HomeViewController:AviationAppDelegate{
     func updatenearest(sunTimesModel: SunTimesModel) {
     }
     
-    func alertUser(_ textArea: UILabel){
+    func alertUser(_ textArea: UILabel?,message: String = "There isn't any reported TAF or METAR" ){
         loadingIndicator.stopAnimating()
         loadingIndicator.isHidden = true
-        textArea.text = "-"
         if !tafLogic, !metarLogic{
-            let alert = UIAlertController(title: "Alert", message: "There isn't any reported TAF or METAR", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            tafLogic = true
+            metarLogic = true
+            aviationAppData.userAlert(sender: self, message: message)
         }
+        guard let _textArea = textArea else { return }
+        _textArea.text = "-"
     }
     
 }

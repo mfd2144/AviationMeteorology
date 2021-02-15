@@ -33,7 +33,9 @@ class SunTimesViewController: UIViewController {
             aviationAppData.sunTimesAirport(icao: (icaoTextField?.text)!)
             icaoTextField.endEditing(true)
             icaoTextField.text = ""
-            
+        }else{
+            aviationAppData.userAlert(sender: self, message: "ICAO code must have 4 characters")
+            icaoTextField.text = ""
         }
         
     }
@@ -69,6 +71,10 @@ class SunTimesViewController: UIViewController {
     
 }
 extension SunTimesViewController: AviationAppDelegate{
+    func errorDidThrow(error: Error) {
+        aviationAppData.userAlert(sender: self, message: error.localizedDescription)
+    }
+    
     func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
         
     }

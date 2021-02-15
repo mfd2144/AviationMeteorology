@@ -23,9 +23,13 @@
 		BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */; };
 		BA4E96C325D4040800A16EC7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */; };
 		BA5D97F925C7445800B3512B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D97F825C7445800B3512B /* HomeViewController.swift */; };
-		BA60816D25D66BD000E8026D /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60816C25D66BD000E8026D /* AnimationView.swift */; };
+		BA604BE825D9C46600A68B53 /* avimetlaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = BA604BE725D9C46600A68B53 /* avimetlaunch.png */; };
+		BA60817525D6B11400E8026D /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA60817025D6B11400E8026D /* Quicksand-Bold.ttf */; };
+		BA60817625D6B11400E8026D /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA60817125D6B11400E8026D /* Quicksand-Medium.ttf */; };
+		BA60817725D6B11400E8026D /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA60817225D6B11400E8026D /* Quicksand-SemiBold.ttf */; };
+		BA60817825D6B11400E8026D /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA60817325D6B11400E8026D /* Quicksand-Light.ttf */; };
+		BA60817925D6B11400E8026D /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA60817425D6B11400E8026D /* Quicksand-Regular.ttf */; };
 		BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA69E35325C88CA000BED030 /* ApiCode.plist */; };
-		BA6A6E1B25D5D8EC00A2F318 /* AnimationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6A6E1A25D5D8EB00A2F318 /* AnimationView.xib */; };
 		BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */; };
 		BA6F21C325CA884200A10932 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C225CA884200A10932 /* Constants.swift */; };
 		BA6F21C825CB2CAB00A10932 /* UnitsSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */; };
@@ -57,9 +61,13 @@
 		BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimesViewController.swift; sourceTree = "<group>"; };
 		BA4E96C225D4040800A16EC7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		BA5D97F825C7445800B3512B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		BA60816C25D66BD000E8026D /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		BA604BE725D9C46600A68B53 /* avimetlaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avimetlaunch.png; sourceTree = "<group>"; };
+		BA60817025D6B11400E8026D /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		BA60817125D6B11400E8026D /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		BA60817225D6B11400E8026D /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
+		BA60817325D6B11400E8026D /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		BA60817425D6B11400E8026D /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		BA69E35325C88CA000BED030 /* ApiCode.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiCode.plist; sourceTree = "<group>"; };
-		BA6A6E1A25D5D8EB00A2F318 /* AnimationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationView.xib; sourceTree = "<group>"; };
 		BA6F21BF25CA86A600A10932 /* DecodedMetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedMetarViewController.swift; sourceTree = "<group>"; };
 		BA6F21C225CA884200A10932 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BA6F21C725CB2CAB00A10932 /* UnitsSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsSettingTableViewController.swift; sourceTree = "<group>"; };
@@ -113,12 +121,14 @@
 		BA0290AD25B9B73B00FAFBC2 /* AviationMeteorology */ = {
 			isa = PBXGroup;
 			children = (
+				BA60816F25D6B0F500E8026D /* Fonts */,
 				BA0290AE25B9B73B00FAFBC2 /* AppDelegate.swift */,
 				BA0290B025B9B73B00FAFBC2 /* SceneDelegate.swift */,
 				BA0290C425BA027700FAFBC2 /* Models */,
 				BA0290C325BA027000FAFBC2 /* Views */,
 				BA0290C525BA028900FAFBC2 /* Controller */,
 				BA0290B725B9B73C00FAFBC2 /* Assets.xcassets */,
+				BA604BE725D9C46600A68B53 /* avimetlaunch.png */,
 				BA0290B925B9B73C00FAFBC2 /* LaunchScreen.storyboard */,
 				BA038F3F25CC2A4800DACE39 /* Settings.plist */,
 				BA69E35325C88CA000BED030 /* ApiCode.plist */,
@@ -132,8 +142,6 @@
 			children = (
 				BA0290B425B9B73B00FAFBC2 /* Main.storyboard */,
 				BA4E96B625D2C79200A16EC7 /* RouteTableViewCell.swift */,
-				BA6A6E1A25D5D8EB00A2F318 /* AnimationView.xib */,
-				BA60816C25D66BD000E8026D /* AnimationView.swift */,
 				BAF108CA25D065F000E40065 /* NearestAirportCell.swift */,
 			);
 			path = Views;
@@ -167,6 +175,18 @@
 				BA4E96BD25D311ED00A16EC7 /* SunTimesViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BA60816F25D6B0F500E8026D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BA60817025D6B11400E8026D /* Quicksand-Bold.ttf */,
+				BA60817325D6B11400E8026D /* Quicksand-Light.ttf */,
+				BA60817125D6B11400E8026D /* Quicksand-Medium.ttf */,
+				BA60817425D6B11400E8026D /* Quicksand-Regular.ttf */,
+				BA60817225D6B11400E8026D /* Quicksand-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		BCA0D243101612676EB2F6E6 /* Pods */ = {
@@ -237,12 +257,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA60817725D6B11400E8026D /* Quicksand-SemiBold.ttf in Resources */,
+				BA60817525D6B11400E8026D /* Quicksand-Bold.ttf in Resources */,
+				BA60817625D6B11400E8026D /* Quicksand-Medium.ttf in Resources */,
 				BA69E35425C88CA000BED030 /* ApiCode.plist in Resources */,
+				BA60817925D6B11400E8026D /* Quicksand-Regular.ttf in Resources */,
 				BA0290BB25B9B73C00FAFBC2 /* LaunchScreen.storyboard in Resources */,
 				BA0290B825B9B73C00FAFBC2 /* Assets.xcassets in Resources */,
 				BA0290B625B9B73B00FAFBC2 /* Main.storyboard in Resources */,
 				BA038F4025CC2A4800DACE39 /* Settings.plist in Resources */,
-				BA6A6E1B25D5D8EC00A2F318 /* AnimationView.xib in Resources */,
+				BA604BE825D9C46600A68B53 /* avimetlaunch.png in Resources */,
+				BA60817825D6B11400E8026D /* Quicksand-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +338,6 @@
 				BAF108CB25D065F000E40065 /* NearestAirportCell.swift in Sources */,
 				BA6F21C025CA86A600A10932 /* DecodedMetarViewController.swift in Sources */,
 				BA0290C725BA02BF00FAFBC2 /*  Button Extension.swift in Sources */,
-				BA60816D25D66BD000E8026D /* AnimationView.swift in Sources */,
 				BA4E96BE25D311ED00A16EC7 /* SunTimesViewController.swift in Sources */,
 				BA6F21C325CA884200A10932 /* Constants.swift in Sources */,
 			);

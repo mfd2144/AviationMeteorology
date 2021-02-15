@@ -172,8 +172,9 @@ extension UnitsSettingTableViewController{
             K.wind: Settings.speed_kts.rawValue,
             K.dewpoint: Settings.celsius.rawValue,
             K.barometer: Settings.hg.rawValue, 
-            K.visibility: Settings.meters.rawValue
-//            K.coordinates: Settings.degrees.rawValue
+            K.visibility: Settings.meters.rawValue,
+//            K.coordinates: Settings.degrees.rawValue,
+            K.distance: Settings.meters.rawValue
         ]
         startingSettings = defaultSettings
         saveSettings()

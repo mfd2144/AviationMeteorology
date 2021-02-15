@@ -14,6 +14,7 @@ class NearestViewController: UIViewController {
     @IBOutlet weak var findButtom: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var locationManager = CLLocationManager()
     var sliderValue = 10
@@ -24,7 +25,7 @@ class NearestViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        activityIndicator.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -39,13 +40,16 @@ class NearestViewController: UIViewController {
     //    adjust radius of search
     @IBAction func distanceSlider(_ sender: UISlider) {
         sliderValue = Int(sender.value / 10) * 10
-        distanceLabel.text = " \(String(sliderValue)) miles"
+        distanceLabel.text = "Search Airports, Heliports etc. in \(String(sliderValue)) miles"
     }
     
     //    call the results
     @IBAction func searchButtonPressed(_ sender:UIButton){
         locationManager.requestLocation()
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
         loadSettings()
+        
         
     }
     
@@ -63,6 +67,11 @@ class NearestViewController: UIViewController {
 
 
 extension NearestViewController: AviationAppDelegate{
+    func errorDidThrow(error: Error) {
+        aviationAppData.userAlert(sender: self, message: error.localizedDescription)
+        activityIndicator.stopAnimating()
+    }
+    
     
     
     func updatenearest(nearestAirportArray: [NearestAirportModel]){
@@ -70,6 +79,8 @@ extension NearestViewController: AviationAppDelegate{
         for singleModel in nearestAirportModel{
             nearestScreenModel.append(NearestScreenLoadModel(nearestModel: singleModel, startingSettings:startingSettings))
         }
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
         tableView.reloadData()
     }
     //    Both informations are not used here
