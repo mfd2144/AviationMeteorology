@@ -40,16 +40,9 @@ class HomeViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    
-        
         navigationController?.navigationBar.isHidden = false
     }
-    
-    @IBAction func decodePressed(_ sender: UIButton) {
-        
-    }
-    
-    
+      
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destinationVC = segue.destination as? DecodedMetarViewController{
@@ -64,14 +57,14 @@ class HomeViewController: UIViewController {
 //MARK: - SearchBarDelegate
 extension HomeViewController:UISearchBarDelegate{
     
-
+//Icao codes must have 4 characters
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         let icaoCode = searchBar.text!
         if icaoCode.count != 4 {
             tafLogic = false
             metarLogic = false
-            alertUser(nil,message: "You must enter 4 character in search field")
+            alertUser(nil,message: "You must enter 4 characters in search field")
             searchBar.text = ""
             return
         }
@@ -79,9 +72,8 @@ extension HomeViewController:UISearchBarDelegate{
 //        Clear reports which belongs before search
         tafResultLabel.text = ""
         metarResultLable.text = ""
-    
         decodedButton.isHidden = true
-        
+//        Data request
         aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.metar)
         aviationAppData.weatherRequest(codesICAO: [icaoCode], reportType: K.taf)
         
@@ -93,14 +85,13 @@ extension HomeViewController:UISearchBarDelegate{
 }
 //MARK: - WeatherDataDelegate
 extension HomeViewController:AviationAppDelegate{
+//    For returning error data to user
     func errorDidThrow(error: Error) {
         aviationAppData.userAlert(sender: self, message: error.localizedDescription)
     }
     
-
-   
-
-    func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
+//    get data request result
+        func updateMetar(weatherMetarArray: [WeathearMetarModel]?, logic: Bool) {
         metarLogic = logic
         logic == false ? alertUser(metarResultLable) : nil
         if let weatherModel = weatherMetarArray{
@@ -131,6 +122,7 @@ extension HomeViewController:AviationAppDelegate{
     func updatenearest(sunTimesModel: SunTimesModel) {
     }
     
+//    thanks to logics variable , check is there any response or not and if it is necesarry ,this function give alert to useer
     func alertUser(_ textArea: UILabel?,message: String = "There isn't any reported TAF or METAR" ){
         loadingIndicator.stopAnimating()
         loadingIndicator.isHidden = true

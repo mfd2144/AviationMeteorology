@@ -8,7 +8,7 @@
 import Foundation             
 import SwiftyJSON
 
-class NearestAirportModel:AviationApp{
+class NearestAirportModel:AviationAppModel{
     var name: String{
         return data["name"].stringValue
     }

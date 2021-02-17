@@ -1,7 +1,7 @@
 //
 //  WeatherData.swift
 //  AviationMeteorology
-//
+//  All requests and data fetch processes take place here
 //  Created by Mehmet fatih DOĞAN on 1.02.2021.
 //
 
@@ -10,18 +10,7 @@ import SwiftyJSON
 import Alamofire
 import CoreLocation
 
-
-enum fetchDataError: Error{
-    case noConnection
-    var description: String{
-        switch  self {
-        case .noConnection:return "kjkjk"
-        }
-    }
-    
-}
-
-
+//this protocol allows data returning concerning pages and also send error information.
 protocol AviationAppDelegate {
     func updateMetar(weatherMetarArray: [WeathearMetarModel]?,logic: Bool)
     func updateTaf(weatherTafArray :[WeatherTafModel]?,logic: Bool)
@@ -30,6 +19,8 @@ protocol AviationAppDelegate {
     func errorDidThrow(error: Error)
 }
 
+
+//All data request takes place in this struct
 struct AviationAppData{
     private let url = "https://api.checkwx.com"
     private let apiCode: String
@@ -56,16 +47,13 @@ struct AviationAppData{
     
     
     
-    //Fetch data using by alamofire.
+//Fetch data using by alamofire.All model first create a url then activate this function and grap the results.And thanks to protocol all data send back.
     private func fetchJSONData(_ urlString: String, completion: @escaping (JSON?,Error?) -> Void){
         let headars = HTTPHeader(name: "X-API-Key", value: apiCode)
-        //        alamofire get request
         AF.request(urlString,method: .get,headers: [headars]).responseJSON { (response) in
             do{
                 let data = try JSON(response.result.get())
                 completion(data,nil)
-                
-                
             }catch{
                 completion(nil,error)
                 
@@ -90,11 +78,12 @@ struct AviationAppData{
         }
     }
     
-    //    Take JSON parse it and convert to WeatherModel then thanks to delegate send WeatherData as a response
+    //    Take JSON parse it and convert to WeatherModel then thanks to delegate send WeatherData as a response.Also I use logic variable because in somepart in my program I need to seperate is data true(it have value) ,false(it came back but there isn't any data) or nil (still in process)
     private func weatherDataResult(_ json:JSON, _ reportType:String){
         for (string,metarTaf) in json{
             if string == "data"{
                 if let metarTafArray = metarTaf.array{
+//  Seperating metar data from taf data in this part
                     if metarTafArray != [] && reportType == K.metar{
                         var modelMetar = [WeathearMetarModel]()
                         modelMetar.append(contentsOf: metarTafArray.map({WeathearMetarModel.init(data: $0)}))
@@ -138,7 +127,7 @@ struct AviationAppData{
         }
     }
     
-    
+    //MARK: - Take user request about suntimes information and respond
     func sunTimesAirport(icao: String){
         let urlString =  "\(url)/station/\(icao)/suntimes"
 
@@ -166,7 +155,8 @@ struct AviationAppData{
             }
         }
     }
-    
+    //MARK: - User Alert
+//    this function helps the decrease code 
     func userAlert(sender:UIViewController,message: String){
         let alert = UIAlertController(title: "", message: message , preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel){_ in

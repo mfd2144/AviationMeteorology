@@ -8,7 +8,7 @@
 import Foundation
 
 
-
+// a collective model for route meteorology
 struct RouteModel{
     let icao: String
     let metar: String?

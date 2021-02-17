@@ -6,6 +6,9 @@
 //
 
 import UIKit
+
+
+//Draw a line around button
 extension UIButton{
     func drawCorner(CGColor :CGColor = UIColor.black.cgColor, borderWidth: CGFloat = 1,cornerRadius: CGFloat) {
         let button = self

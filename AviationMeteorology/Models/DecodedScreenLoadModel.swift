@@ -8,10 +8,18 @@
 
 import Foundation
 
+
+
 struct DecodedScreenLoadModel {
+    
+//    take weathear model from decoded view controller
     private let weatherModel: WeathearMetarModel
+    
+//    take settings from Settings.plist
     private let actualSettings: SettingsModel = StartingSettings.startingSettingsModel
     
+    
+//    convert actual settings to array
     private var settingsWithAbbr: Dictionary<String,String>{
         let abbr = [
             K.barometer:actualSettings.barometer,
@@ -30,7 +38,7 @@ struct DecodedScreenLoadModel {
         self.weatherModel = weatherModel
     }
     
-    
+//    collect data funtion help to add measurement abbrevation to data
     private func collectData(data: String?,_ constantName: String? = nil)->String{
 //       it help grasp data safetly, add abbrevations and if string value is empty return dash
         if data != "" {

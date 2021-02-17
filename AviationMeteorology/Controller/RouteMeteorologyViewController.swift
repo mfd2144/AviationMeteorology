@@ -32,10 +32,8 @@ class RouteMeteorologyViewController: UIViewController {
         aviationAppData.delegate = self
         tableView.rowHeight = 70
         clearButton.drawCorner(cornerRadius: clearButton.frame.height/2)
-    
     }
-    
-    
+
     func createNewTafMetarUnionModel(){// create new mix model from taf and metar
         
 //        check both reports have came
@@ -82,22 +80,16 @@ class RouteMeteorologyViewController: UIViewController {
                 }
             }
         }
-        
-        
         tableView.reloadData()
-        
     }
     @IBAction func clearRouteScreen(_ sender: UIButton){
         searchBar.isUserInteractionEnabled = true
         clearTextField()
-        
     }
-    
 }
 
-
-
 extension RouteMeteorologyViewController: AviationAppDelegate{
+//    data requests and gete responses including error in this extension
     func errorDidThrow(error: Error) {
         aviationAppData.userAlert(sender: self, message: error.localizedDescription)
     }
@@ -124,6 +116,7 @@ extension RouteMeteorologyViewController: AviationAppDelegate{
 
 
 extension RouteMeteorologyViewController: UITableViewDataSource, UITableViewDelegate{
+//    create section for a airport and add taf and metar data here
     func numberOfSections(in tableView: UITableView) -> Int {
         return routeModel?.count ?? 0
     }

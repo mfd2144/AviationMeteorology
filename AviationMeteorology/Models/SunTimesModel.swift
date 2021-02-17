@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class SunTimesModel: AviationApp{
+class SunTimesModel: AviationAppModel{
     var civil_dawn_utc :String{
         return data["sunrise_sunset"]["utc"]["civil_dawn"].stringValue
     }

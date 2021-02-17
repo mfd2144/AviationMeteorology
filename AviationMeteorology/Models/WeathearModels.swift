@@ -9,43 +9,8 @@
 import Foundation
 import SwiftyJSON
 
-class AviationApp{
-    let data: JSON
-    init(data: JSON) {
-        self.data = data
-    }
-    var icao: String{
-        return data["icao"].stringValue
-    }
-    var location: [String] {
-        for (key,array) in data["location"]{
-            if key == "coordinates"{
-                let newArray = array.arrayObject as! [Double]
-                return newArray.map{String(format: "%.4f", $0)}
-            }
-        }
-        return ["0","0"]
-    }
-    var text: String{
-        return data["raw_text"].stringValue
-    }
-    var elevation: Dictionary<String,String>{
-       returnDictionary("elevation")
-    }
-    
-    func returnDictionary(_ name: String)->Dictionary<String,String>{
-        var  newDic = Dictionary<String,String>()
-        for (key,value) in data[name]{
-            newDic[key] = value.stringValue
-        }
-        return newDic
-    }
-}
 
-
-
-
-class WeathearMetarModel: AviationApp{
+class WeathearMetarModel: AviationAppModel{
   
     let weatherSettings = UnitsSettingTableViewController()
     
@@ -102,12 +67,12 @@ class WeathearMetarModel: AviationApp{
 }
 
 
-class WeatherTafModel: AviationApp{
+class WeatherTafModel: AviationAppModel{
 }
 
 
-extension AviationApp:Equatable{
-    static func == (lhs: AviationApp, rhs: AviationApp) -> Bool {
+extension AviationAppModel:Equatable{
+    static func == (lhs: AviationAppModel, rhs: AviationAppModel) -> Bool {
         return lhs.data == rhs.data
     }
 }

@@ -27,23 +27,13 @@ class DecodedMetarViewController: UIViewController {
 
     @IBOutlet weak var visibilityLabel: UILabel!
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tabBarController?.tabBar.isHidden = true
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadSettings()
         loadLabelValues()
-        
-        
-        // Do any additional setup after loading the view.
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = false
+
 
     }
     

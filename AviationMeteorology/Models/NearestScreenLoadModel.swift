@@ -4,7 +4,7 @@
 //  It takes model from nearest page, also from settings page and turn back information array to help fill the labels with measure identity aabrevations.
 //  This page decide to which settings use in user nearest page.
 //  Created by Mehmet fatih DOĞAN on 8.02.2021.
-//
+//  same logic in decoded screen load model
 
 import Foundation
 

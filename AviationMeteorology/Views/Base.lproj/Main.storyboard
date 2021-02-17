@@ -147,7 +147,6 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="decodePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lyV-qx-5du"/>
                                     <segue destination="Qi1-ea-JNF" kind="show" identifier="MainToDecoded" id="vy9-rt-rjN"/>
                                 </connections>
                             </button>
@@ -305,7 +304,7 @@
         <!--Units Setting Table View Controller-->
         <scene sceneID="a9i-XL-JRc">
             <objects>
-                <tableViewController id="f2r-1K-L3b" customClass="UnitsSettingTableViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="f2r-1K-L3b" customClass="UnitsSettingTableViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XV0-PJ-Dkt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -944,16 +943,16 @@
         <!--Decoded Metar View Controller-->
         <scene sceneID="2kt-5J-Jmo">
             <objects>
-                <viewController id="Qi1-ea-JNF" customClass="DecodedMetarViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Qi1-ea-JNF" customClass="DecodedMetarViewController" customModule="AviationMeteorology" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FxS-t4-S25">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ifA-GJ-efE">
-                                <rect key="frame" x="0.0" y="231.5" width="375" height="435.5"/>
+                                <rect key="frame" x="0.0" y="246" width="375" height="421"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsQ-15-cV6" userLabel="Top Icon View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.sleet" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8f7-lc-t6b">
                                                 <rect key="frame" x="280" y="10.5" width="50" height="52.5"/>
@@ -1012,7 +1011,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKd-Ev-kDg" userLabel="Middle Icon View">
-                                        <rect key="frame" x="0.0" y="145" width="375" height="145.5"/>
+                                        <rect key="frame" x="0.0" y="140.5" width="375" height="140"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6hO-oO-fk9">
                                                 <rect key="frame" x="280" y="10.5" width="50" height="49"/>
@@ -1071,7 +1070,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZJ-vC-2ki" userLabel="Bottom Icon View">
-                                        <rect key="frame" x="0.0" y="290.5" width="375" height="145"/>
+                                        <rect key="frame" x="0.0" y="280.5" width="375" height="140.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CDR-5q-Bt5">
                                                 <rect key="frame" x="162.5" y="12.5" width="50" height="45"/>
@@ -1152,43 +1151,43 @@
                                 </variation>
                             </stackView>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZQ-Iy-67w">
-                                <rect key="frame" x="0.0" y="44" width="375" height="157.5"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="172"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o6r-Yp-RXX">
-                                        <rect key="frame" x="40" y="4.5" width="30" height="29"/>
+                                        <rect key="frame" x="40" y="11.5" width="30" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Hxp-Qg-wqL"/>
                                             <constraint firstAttribute="width" constant="30" id="UVW-Sd-3Db"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-LY-uD3">
-                                        <rect key="frame" x="40" y="64.5" width="30" height="29"/>
+                                        <rect key="frame" x="40" y="71.5" width="30" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="1Oo-qF-wSx"/>
                                             <constraint firstAttribute="height" constant="30" id="CjP-Wb-2lR"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Ke-JGw">
-                                        <rect key="frame" x="100" y="67.5" width="42" height="22.5"/>
+                                        <rect key="frame" x="100" y="75" width="42" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Quicksand-SemiBold" family="Quicksand" pointSize="19"/>
                                         <color key="textColor" name="buttonText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XOL-TX-RkC">
-                                        <rect key="frame" x="40" y="124.5" width="30" height="29"/>
+                                        <rect key="frame" x="40" y="131.5" width="30" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="JzV-ff-bON"/>
                                             <constraint firstAttribute="height" constant="30" id="Skf-cb-Tvr"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airport Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="kdC-9O-SZm">
-                                        <rect key="frame" x="100" y="7.5" width="113" height="22.5"/>
+                                        <rect key="frame" x="100" y="15" width="113" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Quicksand-SemiBold" family="Quicksand" pointSize="19"/>
                                         <color key="textColor" name="buttonText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="lfF-aw-x4u">
-                                        <rect key="frame" x="100" y="127.5" width="103.5" height="22.5"/>
+                                        <rect key="frame" x="100" y="135" width="103.5" height="22.5"/>
                                         <fontDescription key="fontDescription" name="Quicksand-SemiBold" family="Quicksand" pointSize="19"/>
                                         <color key="textColor" name="buttonText"/>
                                         <nil key="highlightedColor"/>

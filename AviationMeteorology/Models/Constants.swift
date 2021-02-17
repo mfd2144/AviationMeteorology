@@ -1,7 +1,7 @@
 //
 //  Constants.swift
 //  AviationMeteorology
-//
+//  Decrease error from misspelling
 //  Created by Mehmet fatih DOĞAN on 3.02.2021.
 //
 
